@@ -29,7 +29,7 @@ public class DssExample {
 		}
 
 		// Uploads object to the bucket.Takes bucketname, filename to be stored in bucket, and path of the file
-		conn.uploadObjectFromFileName("my-bucket", "file.mp4","/home/Desktop/video.mp4");
+		conn.uploadObjectFromFileName("my-bucket", "file.mp4","/home/raghav/Desktop/video.mp4");
 
 
 		//List all the objects in a bucket. First create a List array and call listObjects("bucketname") and it will store list of objects in that array 
@@ -40,7 +40,7 @@ public class DssExample {
 		}
 
 		//Download object from the bucket.Takes bucketname, filename which need to be download from bucket, and path of the file where file need to be saved
-		conn.downloadObjectToFileName("my-bucket","file.mp4","/home/Desktop/filedownload.mp4");
+		conn.downloadObjectToFileName("my-bucket","file.mp4","/home/raghav/Desktop/filedownload.mp4");
 
 
 

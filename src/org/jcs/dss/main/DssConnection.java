@@ -108,7 +108,6 @@ public class DssConnection {
 			ioe.printStackTrace();
 		}
 
-
 		return BucketList;
 
 	}
@@ -154,7 +153,7 @@ public class DssConnection {
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
-
+		
 		return DssObjectList;
 
 	}

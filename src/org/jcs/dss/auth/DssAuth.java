@@ -1,8 +1,9 @@
 package org.jcs.dss.auth;
 import java.io.UnsupportedEncodingException;
-import Decoder.BASE64Encoder;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -72,8 +73,10 @@ public class DssAuth {
 		Mac mac = Mac.getInstance("HmacSHA1");
 		mac.init(keySpec);
 		byte[] result = mac.doFinal(cannonicalStrBytes);
-		BASE64Encoder encoder = new BASE64Encoder();
-		String b64_hmac = (encoder.encode(result));
+		//BASE64Encoder encoder = new BASE64Encoder();
+		//String b64_hmac = (encoder.encode(result));
+		String b64_hmac = DatatypeConverter.printBase64Binary(result);
+		
 		String auth = "";
 
 		if (useTimeInSeconds) {
