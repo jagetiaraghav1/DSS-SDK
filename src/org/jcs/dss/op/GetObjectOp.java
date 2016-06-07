@@ -26,7 +26,6 @@ public class GetObjectOp extends ObjectOp {
 		filePath= filepath;
 		httpMethod="GET";
 		opPath = '/' + bucketName + '/' + objectName;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -61,11 +60,11 @@ public class GetObjectOp extends ObjectOp {
 		URL RequestUrl = new URL(Url);
 		HttpURLConnection Connection = (HttpURLConnection)RequestUrl.openConnection();
 		Connection.setRequestMethod("GET");
-		
+
 		for(Entry<String, String> entry : HttpHeader.entrySet()) {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
 		}
-		
+
 		Connection.connect();
 		int responseCode = Connection.getResponseCode();
 		if (responseCode == HttpURLConnection.HTTP_OK) {

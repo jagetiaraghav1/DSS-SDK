@@ -35,9 +35,9 @@ public class DssAuth {
 	}
 
 	public String getCannonicalStr() {
-		
+
 		//return "GET\n\n\nMon, 30 May 2016 14:15:19 GMT\n/";
-		
+
 		String cannonicalStr = "";
 		String md5Checksum = "";
 		//String dateStr = Utils.getCurTimeInGMTString();
@@ -55,18 +55,18 @@ public class DssAuth {
 		cannonicalStr += "\n" + dateStr;
 		cannonicalStr += "\n" + path;
 		return cannonicalStr;
-		
+
 
 	}
 
 	public String getSignature() throws UnsupportedEncodingException,
-			NoSuchAlgorithmException, InvalidKeyException {
-		
+	NoSuchAlgorithmException, InvalidKeyException {
+
 		String secret = secretKey;
 		byte[] secretBytes = secret.getBytes("UTF-8");
 		String cannonicalStr = getCannonicalStr();
-	//	System.out.println(cannonicalStr);
-	
+		//	System.out.println(cannonicalStr);
+
 		byte[] cannonicalStrBytes = cannonicalStr.getBytes("UTF-8");
 		SecretKeySpec keySpec = new SecretKeySpec(secretBytes, "HmacSHA1");
 		Mac mac = Mac.getInstance("HmacSHA1");
@@ -81,11 +81,10 @@ public class DssAuth {
 		} else {
 			auth = ("AWS " + accessKey + ":" + b64_hmac);
 		}
-		//System.out.println(auth);
 		return auth;
 	}
 
-	
+
 	public String getPathForCannonicalString() {
 
 		if (queryStr != "") {

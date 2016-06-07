@@ -19,7 +19,6 @@ public class PutObjectOp extends ObjectOp{
 		filePath= filepath;
 		httpMethod="PUT";
 		opPath = '/' + bucketName + '/' + objectName;
-		System.out.println(opPath);
 	}
 	@Override
 	public Response execute() throws Exception {

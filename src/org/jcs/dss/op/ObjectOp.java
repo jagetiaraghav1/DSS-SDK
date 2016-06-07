@@ -6,7 +6,7 @@ import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
 
 public class ObjectOp extends Op {
-	
+
 	private String bucketName;
 	private String objectName;
 
@@ -18,16 +18,13 @@ public class ObjectOp extends Op {
 	}
 
 	public Response execute() throws Exception {
-		return makeRequest();
-		
+		return makeRequest();	
 	}
-	
-	
-	
+
 	public Object processResult(Object result){
 		return result;
 	}
-		
+
 }
 
 

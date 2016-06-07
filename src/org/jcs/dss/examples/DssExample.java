@@ -11,48 +11,47 @@ import org.jcs.dss.main.DssObject;
 
 public class DssExample {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+		// To connect to the Dss Server.Takes access key, secret key and host of the resource
+		DssConnection conn = new DssConnection
+				("Y7PUMEKBZORIP07W2A1W",
+						"OfKjGgFzcrRgi7JSyCaM3qZc8fqWXshFYMGyXQ7b",
+						"http://192.168.56.111:7480");
 
-		DssConnection conn = new DssConnection(
-				"Y7PUMEKBZORIP07W2A1W",
-				"OfKjGgFzcrRgi7JSyCaM3qZc8fqWXshFYMGyXQ7b",
-				"http://192.168.56.111:7480");
-		
-		
-		//conn.uploadObjectFromFileName("my-new-bucket","qw.mp4","/home/raghav/Desktop/w.mp4");
+		// Creates a bucket. Takes bucket name as input
+		conn.createBucket("my-bucket");
 
-		//conn.downloadObjectToFileName("my-new-bucket","qw.mp4","/home/raghav/qww121.mp4");
-		/*List<Bucket> hello = new ArrayList<Bucket>();
+		//List all the buckets. First create a List array and call listBuckets() and it will store list of buckets in that array
+		List<Bucket> listbucket = new ArrayList<Bucket>();
+		listbucket = conn.listBuckets();
+		for (int i = 0; i < listbucket.size(); i++) {
+			System.out.println(listbucket.get(i).getName());
+		}
 
-		hello = conn.listBuckets();
-		for(int i=0;i<hello.size();i++){
-			System.out.println(hello.get(i).getName());}
-		List<DssObject> hello1 = new ArrayList<DssObject>();
+		// Uploads object to the bucket.Takes bucketname, filename to be stored in bucket, and path of the file
+		conn.uploadObjectFromFileName("my-bucket", "file.mp4","/home/Desktop/video.mp4");
 
-		hello1 = conn.listObjects("my-new-bucket");
-		for(int i=0;i<hello1.size();i++){
-			System.out.println(hello1.get(i).getName());}
-		
-		System.out.println("=================");
-		
-		List<DssObject> hello2 = new ArrayList<DssObject>();
 
-		hello2 = conn.listObjects("my-bucket");
-		for(int i=0;i<hello2.size();i++){
-			System.out.println(hello2.get(i).getName());}*/
-		//conn.copyObject("my-bucket", "copyTest", "my-new-bucket/qwer");
-			//	conn.headBucket("my-new-bucket");
-//conn.headObject("my-new-bucket", "qwer");
-		conn.getPresignedURLOp("my-new-bucket", "qwer", 1234512345);
+		//List all the objects in a bucket. First create a List array and call listObjects("bucketname") and it will store list of objects in that array 
+		List<DssObject> dssobjects = new ArrayList<DssObject>();
+		dssobjects = conn.listObjects("my-bucket");
+		for (int i = 0; i < dssobjects.size(); i++) {
+			System.out.println(dssobjects.get(i).getName());
+		}
+
+		//Download object from the bucket.Takes bucketname, filename which need to be download from bucket, and path of the file where file need to be saved
+		conn.downloadObjectToFileName("my-bucket","file.mp4","/home/Desktop/filedownload.mp4");
+
+
+
+		//Deletes the object from the bucket. Takes bucket name and object
+		conn.deleteObject("my-bucket", "file.mp4");
+
+		// Deletes the bucket. Takes bucket name as input
+		conn.deleteBucket("my-bucket");
+
+
 		System.out.println("Done!!!");
-
-		int expiryTime = (int) (System.currentTimeMillis()/1000);
-System.out.println(expiryTime);
-
 
 	}
 

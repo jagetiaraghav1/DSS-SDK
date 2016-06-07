@@ -85,16 +85,13 @@ public class DssConnection {
 
 		try {
 
-			//Using factory get an instance of document builder
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc= db.parse(new InputSource(new StringReader(Line)));
 
-			//parse using builder to get DOM representation of the XML file
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("Bucket");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
-				// System.out.println("\nCurrent Element :"   + nNode.getNodeName());
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					Bucket temp1 = new Bucket(eElement.getElementsByTagName("Name").item(0).getTextContent(),eElement.getElementsByTagName("CreationDate").item(0).getTextContent());
@@ -133,16 +130,12 @@ public class DssConnection {
 
 		try {
 
-			//Using factory get an instance of document builder
 			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			//parse using builder to get DOM representation of the XML file
 			Document doc= db.parse(new InputSource(new StringReader(Line)));
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("Contents");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
-				// System.out.println("\nCurrent Element :"    + nNode.getNodeName());
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 
@@ -151,9 +144,6 @@ public class DssConnection {
 							eElement.getElementsByTagName("Size").item(0).getTextContent(),
 							eElement.getElementsByTagName("ID").item(0).getTextContent());
 					DssObjectList.add(temp1);
-
-
-
 				}
 			}
 
@@ -178,7 +168,7 @@ public class DssConnection {
 
 	public void uploadObjectFromFileName(String bucketName, String objectName,
 			String filePath) throws Exception {
-		
+
 		PutObjectOp op = new PutObjectOp(this,bucketName,objectName,filePath);
 		Response resp = op.execute();
 	}
@@ -193,36 +183,28 @@ public class DssConnection {
 		DeleteObjectOp op = new DeleteObjectOp(this,bucketName,objectName);
 		op.execute();
 	}
-	
-	public void copyObject(String bucketName, String objectName,String copySource) throws Exception{
+
+	/*public void copyObject(String bucketName, String objectName,String copySource) throws Exception{
 		CopyObjectOp op = new CopyObjectOp(this,bucketName,objectName,copySource);
 		Response resp = op.execute();
 		System.out.println(resp.getStatusMsg());
 	}
-	
+
 	public void headBucket(String bucketName) throws Exception {
 		HeadBucketOp op = new HeadBucketOp(this,bucketName);
-//		Response resp = op.execute();
-//		System.out.println(resp.getStatusMsg());
-//		System.out.println(resp.getStatusCode());
 
 	}
 
-	
+
 	public void headObject(String bucketName, String objectName) throws Exception {
 		HeadObjectOp op = new HeadObjectOp(this,bucketName,objectName);
-//		Response resp = op.execute();
-//		System.out.println(resp.getStatusMsg());
-//		System.out.println(resp.getStatusCode());
 
 	}
-	
+
 	public void getPresignedURLOp(String bucketName, String objectName,int expirytime) throws Exception {
 		GetPresignedURLOp op = new GetPresignedURLOp(this,bucketName,objectName,expirytime);
 		op.Execute();
-		//System.out.println(resp.getStatusMsg());
-		//System.out.println(resp.getStatusCode());
 
-	}
+	}*/
 
 }

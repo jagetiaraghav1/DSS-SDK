@@ -28,11 +28,8 @@ public class Request {
 		Response resp = new Response();
 
 		resp.setStatusCode(connection.getResponseCode());
-
 		resp.setStatusMsg(connection.getResponseMessage());
-
 		resp.setHeaders(connection.getHeaderFields());
-
 		resp.setData(connection.getInputStream());
 
 		return resp;
@@ -54,8 +51,11 @@ public class Request {
 		DataOutputStream out = new DataOutputStream(Connection.getOutputStream());
 
 		byte[] buffer = new byte[4096];
-		while (( Data.read(buffer)) != -1) {
-			out.write(buffer);
+		int bytesRead=Data.read(buffer);
+
+		while ( bytesRead != -1) {
+			out.write(buffer,0,bytesRead);
+			bytesRead=Data.read(buffer);
 		}
 
 

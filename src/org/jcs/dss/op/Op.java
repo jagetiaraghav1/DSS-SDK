@@ -33,18 +33,18 @@ public abstract class Op {
 		queryStr = "";
 		opPath = "";
 	}
-	
+
 	public abstract Object processResult(Object result);
 
 	public Response makeRequest() throws Exception {
 		String date = Utils.getCurTimeInGMTString();
 		DssAuth authentication = new DssAuthBuilder()
-									.httpMethod(httpMethod)
-									.accessKey(conn.getAccessKey())
-									.secretKey(conn.getSecretKey())
-									.path(opPath)
-									.dateStr(date)
-									.build();
+				.httpMethod(httpMethod)
+				.accessKey(conn.getAccessKey())
+				.secretKey(conn.getSecretKey())
+				.path(opPath)
+				.dateStr(date)
+				.build();
 		String signature = authentication.getSignature();
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
@@ -54,9 +54,10 @@ public abstract class Op {
 		}
 		Response resp =  Request.request(httpMethod,request_url,httpHeaders);
 
+
 		return resp;
 	}
 
-	
-	
+
+
 }
