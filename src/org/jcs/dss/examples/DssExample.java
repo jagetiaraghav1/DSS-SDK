@@ -28,22 +28,22 @@ public class DssExample {
 		/*conn.createBucket("my-new-bucket");*/
 
 		//List all the buckets. First create a List array and call listBuckets() and it will store list of buckets in that array
-		List<Bucket> listbucket = new ArrayList<Bucket>();
+		/*List<Bucket> listbucket = new ArrayList<Bucket>();
 		listbucket = conn.listBuckets();
 		for (int i = 0; i < listbucket.size(); i++) {
 			System.out.println(listbucket.get(i).getName());
-		}
+		}*/
 
 		// Uploads object to the bucket.Takes bucketname, filename to be stored in bucket, and path of the file
 		//conn.uploadObjectFromFileName("my-new-bucket", "file.odt","/home/raghav/Desktop/DSS-SDK_explain.odt");
 
 
 		//List all the objects in a bucket. First create a List array and call listObjects("bucketname") and it will store list of objects in that array 
-		List<DssObject> dssobjects = new ArrayList<DssObject>();
+		/*List<DssObject> dssobjects = new ArrayList<DssObject>();
 		dssobjects = conn.listObjects("my-new-bucket");
 		for (int i = 0; i < dssobjects.size(); i++) {
 			System.out.println(dssobjects.get(i).getName());
-		}
+		}*/
 
 		/*	//Download object from the bucket.Takes bucketname, filename which need to be download from bucket, and path of the file where file need to be saved
 		conn.downloadObjectToFileName("my-bucket","file.mp4","/home/raghav/Desktop/filedownload.mp4");
@@ -105,16 +105,16 @@ public class DssExample {
 
 		Uploadpart = conn.uploadPart("my-new-bucket", "hello", "2~rsr0thorLXq_t9Ib-cQ_o1VDNNud3vS", "/home/raghav/Desktop/video1.mp4",sizeOfFiles);
 		for (int i = 0; i < Uploadpart.size(); i++) {
-			System.out.println(Uploadpart.get(i).getPartNumber());
+			System.out.println(Uploadpart.get(i).getpartNumber());
 			System.out.println(Uploadpart.get(i).getETag());
 		}	
-		//Uploadpart.clear();
-
 	    ObjectToXML xml = new ObjectToXML();
-		xml.marshalingExample(Uploadpart);
+		String s = xml.marshalingExample(Uploadpart);
+		
 		//conn.uploadPart("my-new-bucket", "hello", "2~rsr0thorLXq_t9Ib-cQ_o1VDNNud3vS", "3", "/home/raghav/Desktop/video1.mp4");
 		conn.listPart("my-new-bucket", "hello", "2~rsr0thorLXq_t9Ib-cQ_o1VDNNud3vS");
 		//conn.listMPUploadsOp("my-bucket");
+		conn.completeMultiPart("my-new-bucket", "hello", "2~rsr0thorLXq_t9Ib-cQ_o1VDNNud3vS", s);
 		System.out.println("Done!!!");
 
 

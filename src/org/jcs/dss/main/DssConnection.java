@@ -378,13 +378,13 @@ public class DssConnection {
 		System.out.println(resp.getStatusCode());
 		System.out.println(resp.getStatusMsg());
 		InputStream data = resp.getData();
-		BufferedReader in = new BufferedReader(new InputStreamReader(data));
+		/*BufferedReader in = new BufferedReader(new InputStreamReader(data));
 		String inputLine= in.readLine();
 		String Line = inputLine;
 		System.out.println(Line);
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
-		in.close();
+		in.close();*/
 	}
 
 }

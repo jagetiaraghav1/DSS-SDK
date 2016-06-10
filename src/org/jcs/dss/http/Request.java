@@ -56,7 +56,7 @@ public class Request {
 		URL RequestUrl = new URL(Url);
 		HttpURLConnection Connection = (HttpURLConnection)RequestUrl.openConnection();
 		Connection.setDoOutput(true);
-		Connection.setRequestMethod("PUT");
+			Connection.setRequestMethod("PUT");
 		for(Entry<String, String> entry : HttpHeader.entrySet()) {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
 		}

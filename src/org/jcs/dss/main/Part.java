@@ -7,22 +7,22 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement (name = "CompleteMultipartUpload")
 public class Part {
-
-	private List<UploadPartResult> upload = new ArrayList<UploadPartResult>();
+	
+	@XmlElement (name = "Part") 
+	private List<UploadPartResult> upload ;
 	
 	public Part() {}  
 	public Part( List<UploadPartResult> upload) {  
 	    super();  
-	   /* this.id = id;  
-	    this.questionname = questionname;  */
+	    this.upload = new ArrayList<UploadPartResult>();
 	    this.upload = upload;  
 	}  
-	@XmlElement (name = "Part") 
-	public List<UploadPartResult> getUploadPartResult() {  
-	    return upload;  
-	}  
-	public void setUploadPartResult(List<UploadPartResult> upload) {  
-	    this.upload = upload;  
-	}  
+	
+//	public List<UploadPartResult> getUploadPartResult() {  
+//	    return upload;  
+//	}  
+//	void setUploadPartResult(List<UploadPartResult> upload) {  
+//	    this.upload = upload;  
+//	}  
 	
 }

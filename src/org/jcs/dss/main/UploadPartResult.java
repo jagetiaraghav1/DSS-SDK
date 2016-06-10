@@ -2,19 +2,20 @@ package org.jcs.dss.main;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-//@XmlType(propOrder={"PartNumber", "ETag"})
+@XmlType(propOrder={"partNumber", "ETag"})
 public class UploadPartResult {
-	@XmlElement
-
+	
+	@XmlElement(name = "ETag")
 	private String ETag;
 	@XmlElement(name="PartNumber")
-	private String PartNumber;
+	private String partNumber;
+	
 	public UploadPartResult(){}
 	
-	public UploadPartResult(String ETag, String partNumber) {
+	public UploadPartResult(String ETag, String PartNumber) {
 		super();
 		this.ETag= ETag;
-		this.PartNumber = partNumber;
+		this.partNumber = PartNumber;
 	}
 
 	public String getETag() {
@@ -24,11 +25,11 @@ public class UploadPartResult {
 		this.ETag = ETag;
 	}
 
-	public String getPartNumber() {
-		return PartNumber;
+	public String getpartNumber() {
+		return partNumber;
 	}
-	public void setPartNumber(String partNumber) {
-		this.PartNumber = partNumber;
+	public void setPartNumber(String PartNumber) {
+		this.partNumber = PartNumber;
 	}
 	
 }
