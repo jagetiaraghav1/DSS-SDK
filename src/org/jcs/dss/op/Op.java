@@ -21,9 +21,11 @@ public abstract class Op {
 	protected String queryStr;
 	protected String queryStrForSignature;
 	protected String filePath;
-	protected String JcsCopySource;
+	private static String JcsCopySource;
 	protected int expiryTime;
-
+	protected String uploadId;
+	protected String partNumber;
+	protected String multipartUpload;
 
 	public  Op(DssConnection conn) {
 		this.conn = conn;
@@ -44,11 +46,14 @@ public abstract class Op {
 				.secretKey(conn.getSecretKey())
 				.path(opPath)
 				.dateStr(date)
+				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
+		//System.out.println(signature);
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
 		String request_url = conn.getHost() + opPath;
+		//System.out.println(request_url);
 		if(queryStr != ""){
 			request_url += '?' + queryStr;  
 		}
@@ -56,6 +61,14 @@ public abstract class Op {
 
 
 		return resp;
+	}
+
+	public static String getJcsCopySource() {
+		return JcsCopySource;
+	}
+
+	public void setJcsCopySource(String jcsCopySource) {
+		JcsCopySource = jcsCopySource;
 	}
 
 

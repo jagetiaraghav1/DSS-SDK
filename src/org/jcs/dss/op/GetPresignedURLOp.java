@@ -1,5 +1,7 @@
 package org.jcs.dss.op;
 
+import java.net.URL;
+
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -20,13 +22,14 @@ public class GetPresignedURLOp extends ObjectOp {
 		
 	}
 	
-	public void Execute() throws Exception {
+	public URL Execute() throws Exception {
 		expiryTime = (int) (System.currentTimeMillis()/1000)+expiry;
 		
 
-		 MakeRequest();
+		URL url = MakeRequest();
+		return url;
 	}
-	public void MakeRequest() throws Exception {
+	public URL MakeRequest() throws Exception {
 		String date = Utils.getCurTimeInGMTString();
 		DssAuth authentication = new DssAuthBuilder()
 									.httpMethod(httpMethod)
@@ -35,16 +38,15 @@ public class GetPresignedURLOp extends ObjectOp {
 									.path(opPath)
 									.dateStr(date)
 									.expiryTime(expiryTime)
+									.useTimeInSeconds(true)
 									.build();
 		String signature = authentication.getSignature();	
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
 		String request_url = conn.getHost() + opPath;
-        request_url = request_url + "?JCSAccessKeyId="+ conn.getAccessKey() + "&Expires=" + Integer.toString(expiryTime) + "&Signature=" + signature;
-        System.out.println("ok!!!");
-		//Response resp =  Request.request(httpMethod,request_url,httpHeaders);
-
-		//return resp;
+        request_url = request_url + "?AWSAccessKeyId="+ conn.getAccessKey() + "&Expires=" + Integer.toString(expiryTime) + "&Signature=" + signature;
+        URL url = new URL(request_url);
+        return url;
 	}
 
 	

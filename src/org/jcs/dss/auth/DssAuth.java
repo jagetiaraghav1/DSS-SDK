@@ -4,6 +4,8 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+import org.jcs.dss.op.Op;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -37,11 +39,9 @@ public class DssAuth {
 
 	public String getCannonicalStr() {
 
-		//return "GET\n\n\nMon, 30 May 2016 14:15:19 GMT\n/";
 
 		String cannonicalStr = "";
 		String md5Checksum = "";
-		//String dateStr = Utils.getCurTimeInGMTString();
 
 		if (useTimeInSeconds) {
 			dateStr = Integer.toString(expiryTime);
@@ -54,7 +54,13 @@ public class DssAuth {
 		cannonicalStr += "\n" + contentType;
 
 		cannonicalStr += "\n" + dateStr;
+		if(httpMethod=="PUT" & contentType==""){
+		cannonicalStr += "\n"+"x-amz-copy-source:"+Op.getJcsCopySource();
+		cannonicalStr += "\n"+"x-amz-metadata-directive:COPY";
+		}
+
 		cannonicalStr += "\n" + path;
+	//	System.out.println(cannonicalStr);
 		return cannonicalStr;
 
 
