@@ -29,7 +29,7 @@ public class ObjectToXML {
 	    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 	    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 	    Part part = new Part(Uploadpart);
-	    jaxbMarshaller.marshal(part, new File("/home/raghav/Desktop/question1.xml"));  
+	    //jaxbMarshaller.marshal(part, new File("/home/raghav/Desktop/question1.xml"));  
 	    jaxbMarshaller.marshal(part, sw);
 		String xmlString = sw.toString();
 		

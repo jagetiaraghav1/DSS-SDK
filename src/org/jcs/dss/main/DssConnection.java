@@ -21,6 +21,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.jcs.dss.http.Response;
+import org.jcs.dss.op.CancelMPUploadOp;
 import org.jcs.dss.op.CompleteMPUploadOp;
 import org.jcs.dss.op.CopyObjectOp;
 import org.jcs.dss.op.CreateBucketOp;
@@ -132,29 +133,40 @@ public class DssConnection {
 		BufferedReader in = new BufferedReader(new InputStreamReader(data));
 		String inputLine= in.readLine();
 		String Line = inputLine;
+		System.out.println(Line);
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
 		in.close();
 
 		List<DssObject> DssObjectList = new ArrayList<DssObject>();
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+		String Bucket = null;
 		try {
 
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc= db.parse(new InputSource(new StringReader(Line)));
 			doc.getDocumentElement().normalize();
+			
+			NodeList List1 = doc.getElementsByTagName("ListBucketResult");
+			Node Node1 = List1.item(0);
+			if (Node1.getNodeType() == Node.ELEMENT_NODE) {
+				Element Element1 = (Element) Node1;
+				Bucket = Element1.getElementsByTagName("Name").item(0).getTextContent();
+			}
+
 			NodeList nList = doc.getElementsByTagName("Contents");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 
-					DssObject temp1 = new DssObject(eElement.getElementsByTagName("Key").item(0).getTextContent(),
+					DssObject temp1 = new DssObject(Bucket,
+							eElement.getElementsByTagName("Key").item(0).getTextContent(),
 							eElement.getElementsByTagName("LastModified").item(0).getTextContent(),
 							eElement.getElementsByTagName("Size").item(0).getTextContent(),
 							eElement.getElementsByTagName("ID").item(0).getTextContent());
 					DssObjectList.add(temp1);
+					
 				}
 			}
 
@@ -165,7 +177,6 @@ public class DssConnection {
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
-		
 		return DssObjectList;
 
 	}
@@ -182,7 +193,7 @@ public class DssConnection {
 
 		PutObjectOp op = new PutObjectOp(this,bucketName,objectName,filePath);
 		Response resp = op.execute();
-		
+
 	}
 
 	public void downloadObjectToFileName(String bucketName, String objectName,
@@ -222,23 +233,23 @@ public class DssConnection {
 		GetPresignedURLOp op = new GetPresignedURLOp(this,bucketName,objectName,expirytime);
 		URL url = op.Execute();
 		System.out.println("{DownloadUrl:"+url +"}");
-		
+
 
 	}
-	
+
 	public InitiateMultipartUploadResult initMPUpload(String bucketName, String objectName) throws Exception {
 		InitMPUploadOp op = new InitMPUploadOp(this,bucketName,objectName);
-		
+
 		Response resp = op.execute();
 		InputStream data = resp.getData();
 		BufferedReader in = new BufferedReader(new InputStreamReader(data));
 		String inputLine= in.readLine();
 		String Line = inputLine;
-		System.out.println(Line);
+		//System.out.println(Line);
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
 		in.close();
-		
+
 		InitiateMultipartUploadResult temp1 = new  InitiateMultipartUploadResult(null,null, null);
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -248,15 +259,15 @@ public class DssConnection {
 			Document doc= db.parse(new InputSource(new StringReader(Line)));
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("InitiateMultipartUploadResult");
-				Node nNode = nList.item(0);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
+			Node nNode = nList.item(0);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
 
-					 temp1 = new InitiateMultipartUploadResult(eElement.getElementsByTagName("Bucket").item(0).getTextContent(),
-							eElement.getElementsByTagName("Key").item(0).getTextContent(),
-							eElement.getElementsByTagName("UploadId").item(0).getTextContent());
-				}
-			
+				temp1 = new InitiateMultipartUploadResult(eElement.getElementsByTagName("Bucket").item(0).getTextContent(),
+						eElement.getElementsByTagName("Key").item(0).getTextContent(),
+						eElement.getElementsByTagName("UploadId").item(0).getTextContent());
+			}
+
 
 		}catch(ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -265,126 +276,272 @@ public class DssConnection {
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
-		
+
 		return temp1;
 
 	}
-	
-	public void listMPUploads(String bucketName) throws Exception {
+
+	public MultipartUploadListing listMPUploads(String bucketName) throws Exception {
 		ListMPUploadsOp op = new ListMPUploadsOp(this,bucketName);
 		Response resp = op.execute();
-		System.out.println(resp.getStatusMsg());
+		//System.out.println(resp.getStatusMsg());
 		InputStream data = resp.getData();
 		BufferedReader in = new BufferedReader(new InputStreamReader(data));
 		String inputLine= in.readLine();
 		String Line = inputLine;
-		System.out.println(Line);
+		//System.out.println(Line);
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
 		in.close();
-	}
-	
-	public List<UploadPartResult> uploadPart(String bucketName, String objectName,String uploadId,
-			String filePath,int partSize) throws Exception {
 
-		
-		int partNumber = 1;
-		File f = new File(filePath);
-		//System.out.println(f.getParent());
-		//System.out.println(f.getName());
-		int partCounter = 1;
+		MultipartUploadListing multipartUploadList = new MultipartUploadListing(null,null,null,null,null);
+		List<MultipartUpload> multipartUpload = new ArrayList<MultipartUpload>();
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		String initiator=null;
+		String owner=null;
 
-		byte[] buffer = new byte[partSize];
-		List<UploadPartResult> uploadPartResult = new ArrayList<UploadPartResult>();
+		try {
 
-		try (BufferedInputStream bis = new BufferedInputStream(
-				new FileInputStream(f))) {
-			String name = f.getName();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc= db.parse(new InputSource(new StringReader(Line)));
+			doc.getDocumentElement().normalize();
+			NodeList List = doc.getElementsByTagName("Initiator");
+			Node Node = List.item(0);
+			if (Node.getNodeType() == Node.ELEMENT_NODE) {
+				Element Element = (Element) Node;
+				initiator = Element.getElementsByTagName("ID").item(0).getTextContent();
+			}
 
-			int tmp = 0;
-			while ((tmp = bis.read(buffer)) > 0) {
-				File newFile = new File(f.getParent(), name + "."
-						+ Integer.toString(partCounter++));
-				try (FileOutputStream out = new FileOutputStream(newFile)) {
-					out.write(buffer, 0, tmp);
-			UploadPartOp op= new UploadPartOp(this,"my-new-bucket", "hello", "2~rsr0thorLXq_t9Ib-cQ_o1VDNNud3vS", Integer.toString(partCounter-1), newFile.getParent()+"/"+newFile.getName());
-					Response resp = op.execute();
-					
-					String ETag = null;
-					for (Map.Entry<String, List<String>> headers : resp.getHeaders().entrySet()) {
-						   String key = new String();
-						   if(headers.getKey()!=null)
-						   key = headers.getKey();
+			NodeList List1 = doc.getElementsByTagName("Owner");
+			Node Node1 = List1.item(0);
+			if (Node1.getNodeType() == Node.ELEMENT_NODE) {
+				Element Element1 = (Element) Node1;
+				owner = Element1.getElementsByTagName("ID").item(0).getTextContent();
+			}
 
-						  List<String> valueList = headers.getValue();
-						  if(key.contentEquals("ETag") )
-						  {
-						    ETag=valueList.get(0).substring(1, valueList.get(0).length()-1);
+			NodeList nList = doc.getElementsByTagName("Upload");
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
 
-						  }}
-					UploadPartResult upload =new UploadPartResult(ETag,Integer.toString(partNumber));
-					partNumber++;
-					uploadPartResult.add(upload);
-					newFile.delete();
+					MultipartUpload	multipartUp = new MultipartUpload(eElement.getElementsByTagName("Key").item(0).getTextContent(),
+							eElement.getElementsByTagName("UploadId").item(0).getTextContent(),
+							initiator,
+							owner,
+							eElement.getElementsByTagName("StorageClass").item(0).getTextContent(),
+							eElement.getElementsByTagName("Initiated").item(0).getTextContent());
+					multipartUpload.add(multipartUp);
 				}
+			}
+
+			NodeList List2 = doc.getElementsByTagName("ListMultipartUploadsResult");
+			Node Node2 = List2.item(0);
+			if (Node2.getNodeType() == Node.ELEMENT_NODE) {
+				Element Element2 = (Element) Node2;
+
+				multipartUploadList = new MultipartUploadListing(Element2.getElementsByTagName("Bucket").item(0).getTextContent(),
+						Element2.getElementsByTagName("NextKeyMarker").item(0).getTextContent(),
+						Element2.getElementsByTagName("NextUploadIdMarker").item(0).getTextContent(),
+						Element2.getElementsByTagName("MaxUploads").item(0).getTextContent(),
+						multipartUpload);
+			}
+		
+
+
+
+	}catch(ParserConfigurationException pce) {
+		pce.printStackTrace();
+	}catch(SAXException se) {
+		se.printStackTrace();
+	}catch(IOException ioe) {
+		ioe.printStackTrace();
+	}
+
+	return multipartUploadList;
+
+
+}
+
+public List<UploadPartResult> uploadPart(String bucketName, String objectName,String uploadId,
+		String filePath,int partSize) throws Exception {
+
+
+	int partNumber = 1;
+	File f = new File(filePath);
+	int partCounter = 1;
+	byte[] buffer = new byte[partSize];
+	List<UploadPartResult> uploadPartResult = new ArrayList<UploadPartResult>();
+
+	try (BufferedInputStream bis = new BufferedInputStream(
+			new FileInputStream(f))) {
+		String name = f.getName();
+
+		int tmp = 0;
+		while ((tmp = bis.read(buffer)) > 0) {
+			File newFile = new File(f.getParent(), name + "."
+					+ Integer.toString(partCounter++));
+			try (FileOutputStream out = new FileOutputStream(newFile)) {
+				out.write(buffer, 0, tmp);
+				UploadPartOp op= new UploadPartOp(this,bucketName,objectName , uploadId, Integer.toString(partCounter-1), newFile.getParent()+"/"+newFile.getName());
+				Response resp = op.execute();
+			//	System.out.println(resp.getStatusCode());
+
+				String ETag = null;
+				for (Map.Entry<String, List<String>> headers : resp.getHeaders().entrySet()) {
+					String key = new String();
+					if(headers.getKey()!=null)
+						key = headers.getKey();
+
+					List<String> valueList = headers.getValue();
+					if(key.contentEquals("ETag") )
+					{
+						ETag=valueList.get(0).substring(1, valueList.get(0).length()-1);
+						//ETag = valueList.get(0);
+
+					}}
+				UploadPartResult upload =new UploadPartResult(ETag,Integer.toString(partNumber));
+				partNumber++;
+				uploadPartResult.add(upload);
+				newFile.delete();
+			}
+		}
+	}
+	return uploadPartResult;
+
+}
+
+
+public PartListing listPart(String bucketName, String objectName,String uploadId) throws Exception {
+
+	ListPartOp op = new ListPartOp(this,bucketName,objectName,uploadId);
+	Response resp = op.execute();
+	InputStream data = resp.getData();
+	BufferedReader in = new BufferedReader(new InputStreamReader(data));
+	String inputLine= in.readLine();
+	String Line = inputLine;
+	//System.out.println(Line);
+	while ((inputLine = in.readLine()) != null)
+		System.out.println(inputLine);
+	in.close();
+	
+	
+	PartListing partList = new PartListing(null,null,null,null,null,null,null,null,null);
+	List<PartSummary> Partdetails = new ArrayList<PartSummary>();
+	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	String owner=null;
+
+	try {
+
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc= db.parse(new InputSource(new StringReader(Line)));
+		doc.getDocumentElement().normalize();
+		
+
+		NodeList List1 = doc.getElementsByTagName("Owner");
+		Node Node1 = List1.item(0);
+		if (Node1.getNodeType() == Node.ELEMENT_NODE) {
+			Element Element1 = (Element) Node1;
+			owner = Element1.getElementsByTagName("ID").item(0).getTextContent();
+		}
+
+		NodeList nList = doc.getElementsByTagName("Part");
+		for (int temp = 0; temp < nList.getLength(); temp++) {
+			Node nNode = nList.item(temp);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+
+				PartSummary	partSummary = new PartSummary(eElement.getElementsByTagName("LastModified").item(0).getTextContent(),
+						eElement.getElementsByTagName("PartNumber").item(0).getTextContent(),
+						eElement.getElementsByTagName("ETag").item(0).getTextContent(),
+						eElement.getElementsByTagName("Size").item(0).getTextContent());
+				Partdetails.add(partSummary);
 			}
 		}
 
-		
-		
-		/*UploadPartOp op = new UploadPartOp(this,bucketName,objectName,uploadId,partNumber,filePath);
-		Response resp = op.execute();
-		
-		String ETag = null;
-		List<UploadPartResult> uploadPartResult = new ArrayList<UploadPartResult>();
-		for (Map.Entry<String, List<String>> headers : resp.getHeaders().entrySet()) {
-			   String key = new String();
-			   if(headers.getKey()!=null)
-			   key = headers.getKey();
+		NodeList List2 = doc.getElementsByTagName("ListPartsResult");
+		Node Node2 = List2.item(0);
+		if (Node2.getNodeType() == Node.ELEMENT_NODE) {
+			Element Element2 = (Element) Node2;
 
-			  List<String> valueList = headers.getValue();
-			  if(key.contentEquals("ETag") )
-			  {
-			    ETag=valueList.get(0).substring(1, valueList.get(0).length()-1);
-
-			  }}
-		UploadPartResult upload =new UploadPartResult(ETag,partNumber);
-		uploadPartResult.add(upload);*/
-		return uploadPartResult;
-		
-	}
-
+			partList = new PartListing(Element2.getElementsByTagName("Bucket").item(0).getTextContent(),
+					Element2.getElementsByTagName("Key").item(0).getTextContent(),
+					Element2.getElementsByTagName("UploadId").item(0).getTextContent(),
+					Element2.getElementsByTagName("StorageClass").item(0).getTextContent(),
+					Element2.getElementsByTagName("PartNumberMarker").item(0).getTextContent(),
+					Element2.getElementsByTagName("NextPartNumberMarker").item(0).getTextContent(),
+					Element2.getElementsByTagName("MaxParts").item(0).getTextContent(),
+					owner,
+					Partdetails);
+		}
 	
-	public void listPart(String bucketName, String objectName,String uploadId) throws Exception {
 
-		ListPartOp op = new ListPartOp(this,bucketName,objectName,uploadId);
-		Response resp = op.execute();
-		System.out.println(resp.getStatusCode());
-		System.out.println(resp.getStatusMsg());
-		InputStream data = resp.getData();
-		BufferedReader in = new BufferedReader(new InputStreamReader(data));
-		String inputLine= in.readLine();
-		String Line = inputLine;
-		System.out.println(Line);
-		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
-		in.close();
-	}
-	
-	public void completeMultiPart(String bucketName, String objectName,String uploadId,String multipartUpload) throws Exception {
 
-		CompleteMPUploadOp op = new CompleteMPUploadOp(this,bucketName,objectName,uploadId,multipartUpload);
-		Response resp = op.execute();
-		System.out.println(resp.getStatusCode());
-		System.out.println(resp.getStatusMsg());
-		InputStream data = resp.getData();
-		/*BufferedReader in = new BufferedReader(new InputStreamReader(data));
-		String inputLine= in.readLine();
-		String Line = inputLine;
-		System.out.println(Line);
-		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
-		in.close();*/
+
+}catch(ParserConfigurationException pce) {
+	pce.printStackTrace();
+}catch(SAXException se) {
+	se.printStackTrace();
+}catch(IOException ioe) {
+	ioe.printStackTrace();
+}
+
+return partList;
+
+}
+
+public CompleteMultipartUploadResult completeMultiPart(String bucketName, String objectName,String uploadId,String multipartUpload) throws Exception {
+
+	CompleteMPUploadOp op = new CompleteMPUploadOp(this,bucketName,objectName,uploadId,multipartUpload);
+	Response resp = op.execute();
+	InputStream data = resp.getData();
+	BufferedReader in = new BufferedReader(new InputStreamReader(data));
+	String inputLine= in.readLine();
+	String Line = inputLine;
+	//System.out.println(Line);
+	while ((inputLine = in.readLine()) != null)
+		System.out.println(inputLine);
+	in.close();
+
+
+	CompleteMultipartUploadResult temp1 = new  CompleteMultipartUploadResult(null,null, null);
+	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+	try {
+
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc= db.parse(new InputSource(new StringReader(Line)));
+		doc.getDocumentElement().normalize();
+		NodeList nList = doc.getElementsByTagName("CompleteMultipartUploadResult");
+		Node nNode = nList.item(0);
+		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+			Element eElement = (Element) nNode;
+
+			temp1 = new CompleteMultipartUploadResult(eElement.getElementsByTagName("Bucket").item(0).getTextContent(),
+					eElement.getElementsByTagName("Key").item(0).getTextContent(),
+					eElement.getElementsByTagName("ETag").item(0).getTextContent());
+		}
+
+
+	}catch(ParserConfigurationException pce) {
+		pce.printStackTrace();
+	}catch(SAXException se) {
+		se.printStackTrace();
+	}catch(IOException ioe) {
+		ioe.printStackTrace();
 	}
+
+	return temp1;
+
+}
+
+public void cancelMPUpload(String bucketName, String objectName,String uploadId) throws Exception {
+
+	CancelMPUploadOp op = new CancelMPUploadOp(this,bucketName,objectName,uploadId);
+	Response resp = op.execute();
+	//System.out.println(resp.getStatusCode());
+	//System.out.println(resp.getStatusMsg());
+
+}
 
 }

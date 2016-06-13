@@ -3,13 +3,13 @@ package org.jcs.dss.main;
 public class DssObject {
 
 	String name;
-	Bucket bucket;
+	String bucket;
 	String size;
 	String ownerId;
 	String lastModified;
 	
 	
-	public DssObject(String name,String lastModified,String size,String ownerId) {
+	public DssObject(String bucket,String name,String lastModified,String size,String ownerId) {
 		super();
 		this.name = name;
 		this.bucket = bucket;
@@ -26,11 +26,11 @@ public class DssObject {
 		this.size = size;
 	}
 	
-	public Bucket getBucket() {
+	public String getBucket() {
 		return bucket;
 	}
 	
-	public void setBucket(Bucket bucket) {
+	public void setBucket(String bucket) {
 		this.bucket = bucket;
 	}
 	public String getName() {

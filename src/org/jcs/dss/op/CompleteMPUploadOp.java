@@ -82,10 +82,9 @@ public class CompleteMPUploadOp extends ObjectOp{
 
 		byte[] buffer = new byte[4096];
 		int bytesRead=Data.read(buffer);
-	
 		while ( bytesRead != -1) {
-			String str = new String(buffer, "UTF-8");
-			System.out.println(str);
+			//String str = new String(buffer, "UTF-8");
+			//System.out.println(str);
 			out.write(buffer,0,bytesRead);
 			bytesRead=Data.read(buffer);
 		}
