@@ -1,8 +1,6 @@
 package org.jcs.dss.op;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -12,19 +10,18 @@ import org.jcs.dss.utils.Utils;
 
 public class UploadPartOp extends ObjectOp{
 
-	
-	public UploadPartOp(DssConnection conn, String bucketName, String objectName,String uploadId,String partNumber, String filePath) {
+	private InputStream inStream = null;
+
+	public UploadPartOp(DssConnection conn, String bucketName, String objectName,String uploadId,String partNumber, InputStream inStream) {
 		super(conn, bucketName, objectName);
 		httpMethod ="PUT";
-		this.partNumber=partNumber;
-		this.uploadId=uploadId;
-		this.filePath=filePath;
 		opPath = "/"+bucketName+"/"+objectName;
 		queryStr = "partNumber="+ partNumber+"&uploadId="+ uploadId;
 		queryStrForSignature = "partNumber="+ partNumber+"&uploadId="+ uploadId;
+		this.inStream = inStream;
 	}
-	
-	
+
+
 	@Override
 	public Response execute() throws Exception {
 		return makeRequest();
@@ -43,20 +40,15 @@ public class UploadPartOp extends ObjectOp{
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
-		InputStream object = new FileInputStream(filePath);
-
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
-		httpHeaders.put("Content-Length", Integer.toString(object.available()));
+		httpHeaders.put("Content-Length", Integer.toString(inStream.available()));
 		httpHeaders.put("Content-Type", "application/octet-stream");
-
 		String request_url = conn.getHost() + opPath;
 		if(queryStr != ""){
 			request_url += '?' + queryStr;  
 		}
-		Response resp =  Request.Put(request_url,httpHeaders,object);
-
+		Response resp =  Request.Put(httpMethod,request_url,httpHeaders,inStream);
 		return resp;
 	}
-
 }

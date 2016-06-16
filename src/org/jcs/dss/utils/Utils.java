@@ -9,6 +9,7 @@ public class Utils {
 	
 	public static String getCurTimeInGMTString() {
 		Date date = new Date();
+		@SuppressWarnings("deprecation")
 		String dateGMTStr = date.toGMTString();
 		Calendar calendar = Calendar.getInstance();
 		Date curTime = calendar.getTime();

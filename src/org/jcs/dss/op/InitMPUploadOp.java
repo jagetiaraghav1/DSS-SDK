@@ -1,6 +1,12 @@
 package org.jcs.dss.op;
 
+import java.io.*;
+import javax.xml.parsers.*;
+import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
+import org.jcs.dss.main.InitiateMultipartUploadResult;
+import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 
 public class InitMPUploadOp extends ObjectOp{
 
@@ -11,4 +17,29 @@ public class InitMPUploadOp extends ObjectOp{
 		queryStrForSignature="uploads";
 	}
 
+
+	@Override
+	public Object processResult(Object resp) throws IOException{
+		InputStream data = ((Response) resp).getData();
+		BufferedReader input = new BufferedReader(new InputStreamReader(data));
+		String XML= input.readLine();
+		InitiateMultipartUploadResult imitMPupload = new  InitiateMultipartUploadResult(null,null, null);
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc= db.parse(new InputSource(new StringReader(XML)));
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("InitiateMultipartUploadResult");
+			Node nNode = nList.item(0);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				imitMPupload = new InitiateMultipartUploadResult(eElement.getElementsByTagName("Bucket").item(0).getTextContent(),
+						eElement.getElementsByTagName("Key").item(0).getTextContent(),
+						eElement.getElementsByTagName("UploadId").item(0).getTextContent());
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return imitMPupload;
+	}
 }

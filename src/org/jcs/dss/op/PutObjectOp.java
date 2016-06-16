@@ -3,17 +3,19 @@ package org.jcs.dss.op;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
+import java.util.List;
+import java.util.Map;
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
 import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
+import org.jcs.dss.main.PutObjectResult;
 import org.jcs.dss.utils.Utils;
 
 public class PutObjectOp extends ObjectOp{
-
-
+	
+	private String filePath;
 	public PutObjectOp(DssConnection conn,String bucketName, String objectName,String filepath) throws FileNotFoundException {
 		super(conn,bucketName,objectName);
 		filePath= filepath;
@@ -48,10 +50,32 @@ public class PutObjectOp extends ObjectOp{
 		if(queryStr != ""){
 			request_url += '?' + queryStr;  
 		}
-		Response resp =  Request.Put(request_url,httpHeaders,object);
+		Response resp =  Request.Put(httpMethod,request_url,httpHeaders,object);
 
 		return resp;
 	}
 
+	@Override
+	public Object processResult(Object resp){
 
+		String ETag = null;
+		String Date = null;
+		for (Map.Entry<String, List<String>> headers : ((Response) resp).getHeaders().entrySet()) {
+			String key = new String();
+			if(headers.getKey()!=null)
+				key = headers.getKey();
+			List<String> valueList = headers.getValue();
+			if(key.contentEquals("ETag") )
+			{
+				ETag=valueList.get(0).substring(1, valueList.get(0).length()-1);
+
+			}
+			else if(key.contentEquals("Date")){
+				Date = valueList.get(0);
+			}
+		}
+		PutObjectResult putObject = new PutObjectResult(ETag,Date);
+
+		return putObject;
+	}
 }

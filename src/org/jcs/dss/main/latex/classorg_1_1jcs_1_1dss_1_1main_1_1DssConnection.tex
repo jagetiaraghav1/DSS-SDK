@@ -1,0 +1,596 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection}{}\section{org.\+jcs.\+dss.\+main.\+Dss\+Connection Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection}\index{org.\+jcs.\+dss.\+main.\+Dss\+Connection@{org.\+jcs.\+dss.\+main.\+Dss\+Connection}}
+
+
+Provides an interface to the client for accessing the J\+CS D\+SS web service.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_af240fbb96df0fbcfb47005e662dd4934}{Dss\+Connection} (String access\+Key, String secret\+Key, String host)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_af240fbb96df0fbcfb47005e662dd4934}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_af240fbb96df0fbcfb47005e662dd4934}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac34701849b27b9041fd2d584caa9f074}{get\+Access\+Key} ()
+\begin{DoxyCompactList}\small\item\em Returns the Access key entered by client. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3e8946bf410e45e74da79b5c34baedb5}{get\+Secret\+Key} ()
+\begin{DoxyCompactList}\small\item\em Returns the Secret key entered by client. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a441d432bf7f7da98d36285b5049d90db}{get\+Host} ()
+\begin{DoxyCompactList}\small\item\em Returns the Host address entered by client. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1Bucket}{Bucket} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad67678e6ac4fd6b11cab125c81643f37}{create\+Bucket} (String bucket\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Creates a new D\+SS bucket. \end{DoxyCompactList}\item 
+List$<$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1Bucket}{Bucket} $>$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac454ec0fb13b6a8e7e01addbc9255216}{list\+Buckets} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em Returns the List of D\+SS buckets owned by authenticated sender. \end{DoxyCompactList}\item 
+List$<$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssObject}{Dss\+Object} $>$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a6b2c8f94a1c223779999361cfa4d2305}{list\+Objects} (String bucket\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Returns the List of objects and its information associated with the requested bucket. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a081d22d9eb0696a963995e1d44b25812}{delete\+Bucket} (String bucket\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Deletes the requested bucket. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PutObjectResult}{Put\+Object\+Result} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aa8b4864c3503f500b53d5da22d44f66f}{upload\+Object\+From\+File\+Name} (String bucket\+Name, String object\+Name, String file\+Path)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Uploads a new file in the specified D\+SS bucket. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a36c8cb22551c789ff504cad62a63e034}{download\+Object\+To\+File\+Name} (String bucket\+Name, String object\+Name, String file\+Path)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Downloads the requested object from the specified bucket to the requested file path. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1Objectdata}{Objectdata} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0d820a1c0824ade9d5a62f3593df73eb}{get\+Object\+Detail} (String bucket\+Name, String object\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Returns the information associated with the specified object in the requested bucket. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac7f5809280a368cf5f990f18d91a744c}{delete\+Object} (String bucket\+Name, String object\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Deletes the specified object in the specified bucket. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1CopyObjectResult}{Copy\+Object\+Result} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a31daa51ffca93a02083410c0e4502625}{copy\+Object} (String bucket\+Name, String object\+Name, String copy\+Source)  throws Exception
+\begin{DoxyCompactList}\small\item\em Copies object from specified source to the new destination. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aac9f7f5d23874eeaa61c466ce1a0f579}{head\+Bucket} (String bucket\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Performs head bucket operation to determine if the requested bucket exists and if you have permission to access it. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0bc9fd6855f69db8d2a37a0be752c19d}{head\+Object} (String bucket\+Name, String object\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Performs head object operation to determine if the requested object in the specified bucket exists and if you have permission to access it. \end{DoxyCompactList}\item 
+U\+RL \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3fcbd474e33b3f5368cd91e2af1c8ff4}{get\+Presigned\+U\+RL} (String bucket\+Name, String object\+Name, int expirytime)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Returns a U\+RL for accessing a D\+SS resource. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1InitiateMultipartUploadResult}{Initiate\+Multipart\+Upload\+Result} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad24351a0b8ecaf03f9ed6bb02506f04a}{init\+M\+P\+Upload} (String bucket\+Name, String object\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Initiates a multipart upload and returns an \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1InitiateMultipartUploadResult}{Initiate\+Multipart\+Upload\+Result} which contains an upload ID. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1MultipartUploadListing}{Multipart\+Upload\+Listing} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a15fe3ef4a3a6bd2bb64ef8e6ed38a59b}{list\+M\+P\+Uploads} (String bucket\+Name)  throws Exception 
+\begin{DoxyCompactList}\small\item\em List in-\/progress multipart Uploads associated with the specified bucket and their details. \end{DoxyCompactList}\item 
+List$<$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1UploadPartResult}{Upload\+Part\+Result} $>$ \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a7ade5b9a69b86f1570d80ecf50625897}{upload\+Part} (String bucket\+Name, String object\+Name, String upload\+Id, String file\+Path, int part\+Size)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Uploads a part in a multipart upload. You must initiate a multipart upload before you can upload any part. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartListing}{Part\+Listing} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a2deddf3532b4af7a262f42921ad0b828}{list\+Part} (String bucket\+Name, String object\+Name, String upload\+Id)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Lists the parts that have been uploaded for the specific multipart upload which is identified by upload ID. \end{DoxyCompactList}\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1CompleteMultipartUploadResult}{Complete\+Multipart\+Upload\+Result} \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a680cb9129a891bb84c1ba86610850750}{complete\+Multi\+Part} (String bucket\+Name, String object\+Name, String upload\+Id, String multipart\+Upload)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Completes a multipart upload by assembling previously uploaded parts in the order of the part number specified. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a9f93c6721754267d929e93886b69134c}{cancel\+M\+P\+Upload} (String bucket\+Name, String object\+Name, String upload\+Id)  throws Exception 
+\begin{DoxyCompactList}\small\item\em Cancels a multipart upload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides an interface to the client for accessing the J\+CS D\+SS web service. 
+
+The J\+CS D\+SS java-\/sdk provides a interface that can be used to store and retrieve any amount of data, at any time, from anywhere on the web. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!cancel\+M\+P\+Upload@{cancel\+M\+P\+Upload}}
+\index{cancel\+M\+P\+Upload@{cancel\+M\+P\+Upload}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{cancel\+M\+P\+Upload(\+String bucket\+Name, String object\+Name, String upload\+Id)}{cancelMPUpload(String bucketName, String objectName, String uploadId)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+cancel\+M\+P\+Upload (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{upload\+Id}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a9f93c6721754267d929e93886b69134c}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a9f93c6721754267d929e93886b69134c}
+
+
+Cancels a multipart upload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket containing the multipart upload to cancel. \\
+\hline
+{\em Object\+Name} & \+: Key of the multipart upload to cancel. \\
+\hline
+{\em Upload\+Id} & \+: ID of the multipart upload to cancel. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!complete\+Multi\+Part@{complete\+Multi\+Part}}
+\index{complete\+Multi\+Part@{complete\+Multi\+Part}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{complete\+Multi\+Part(\+String bucket\+Name, String object\+Name, String upload\+Id, String multipart\+Upload)}{completeMultiPart(String bucketName, String objectName, String uploadId, String multipartUpload)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complete\+Multipart\+Upload\+Result} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+complete\+Multi\+Part (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{upload\+Id, }
+\item[{String}]{multipart\+Upload}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a680cb9129a891bb84c1ba86610850750}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a680cb9129a891bb84c1ba86610850750}
+
+
+Completes a multipart upload by assembling previously uploaded parts in the order of the part number specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket containing the multipart upload to complete. \\
+\hline
+{\em Object\+Name} & \+: Key under which the multipart upload to complete is stored. \\
+\hline
+{\em Upload\+Id} & \+: ID of the multipart upload to complete. \\
+\hline
+{\em \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1MultipartUpload}{Multipart\+Upload}} & \+: X\+ML string containing E\+Tag and part number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1CompleteMultipartUploadResult}{Complete\+Multipart\+Upload\+Result} \+: Returns the details related to completed multipart upload. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!copy\+Object@{copy\+Object}}
+\index{copy\+Object@{copy\+Object}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{copy\+Object(\+String bucket\+Name, String object\+Name, String copy\+Source)}{copyObject(String bucketName, String objectName, String copySource)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Copy\+Object\+Result} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+copy\+Object (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{copy\+Source}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a31daa51ffca93a02083410c0e4502625}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a31daa51ffca93a02083410c0e4502625}
+
+
+Copies object from specified source to the new destination. 
+
+By default, all object metadata for the source object, storage-\/class are copied to the new destination object.
+
+Note \+: Copy\+Source must be of the form bucket\+Name/object\+Name or else operation will fail. 
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket where object need to be copied. \\
+\hline
+{\em object\+Name} & \+: Key of the newly copied object. \\
+\hline
+{\em copy\+Source} & \+: Path of the object where original data is present. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1CopyObjectResult}{Copy\+Object\+Result} \+: Returns the data related to newly copied object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!create\+Bucket@{create\+Bucket}}
+\index{create\+Bucket@{create\+Bucket}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{create\+Bucket(\+String bucket\+Name)}{createBucket(String bucketName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bucket} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+create\+Bucket (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad67678e6ac4fd6b11cab125c81643f37}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad67678e6ac4fd6b11cab125c81643f37}
+
+
+Creates a new D\+SS bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the D\+SS bucket to be created. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1Bucket}{Bucket} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!delete\+Bucket@{delete\+Bucket}}
+\index{delete\+Bucket@{delete\+Bucket}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{delete\+Bucket(\+String bucket\+Name)}{deleteBucket(String bucketName)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+delete\+Bucket (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a081d22d9eb0696a963995e1d44b25812}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a081d22d9eb0696a963995e1d44b25812}
+
+
+Deletes the requested bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the D\+SS bucket need to be deleted.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!delete\+Object@{delete\+Object}}
+\index{delete\+Object@{delete\+Object}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{delete\+Object(\+String bucket\+Name, String object\+Name)}{deleteObject(String bucketName, String objectName)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+delete\+Object (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac7f5809280a368cf5f990f18d91a744c}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac7f5809280a368cf5f990f18d91a744c}
+
+
+Deletes the specified object in the specified bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket where the requested object exists. \\
+\hline
+{\em Object\+Name} & \+: Key of the Object to remove. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!download\+Object\+To\+File\+Name@{download\+Object\+To\+File\+Name}}
+\index{download\+Object\+To\+File\+Name@{download\+Object\+To\+File\+Name}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{download\+Object\+To\+File\+Name(\+String bucket\+Name, String object\+Name, String file\+Path)}{downloadObjectToFileName(String bucketName, String objectName, String filePath)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+download\+Object\+To\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{file\+Path}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a36c8cb22551c789ff504cad62a63e034}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a36c8cb22551c789ff504cad62a63e034}
+
+
+Downloads the requested object from the specified bucket to the requested file path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the D\+SS bucket from where data need to be download. \\
+\hline
+{\em Object\+Name} & \+: Sets the key under which object is stored. \\
+\hline
+{\em File\+Path} & \+: Path of the file where file is need to be download. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!get\+Access\+Key@{get\+Access\+Key}}
+\index{get\+Access\+Key@{get\+Access\+Key}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{get\+Access\+Key()}{getAccessKey()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+get\+Access\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac34701849b27b9041fd2d584caa9f074}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac34701849b27b9041fd2d584caa9f074}
+
+
+Returns the Access key entered by client. 
+
+\begin{DoxyReturn}{Returns}
+String \+: Access\+Key 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!get\+Host@{get\+Host}}
+\index{get\+Host@{get\+Host}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{get\+Host()}{getHost()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+get\+Host (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a441d432bf7f7da98d36285b5049d90db}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a441d432bf7f7da98d36285b5049d90db}
+
+
+Returns the Host address entered by client. 
+
+\begin{DoxyReturn}{Returns}
+String \+: Host 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!get\+Object\+Detail@{get\+Object\+Detail}}
+\index{get\+Object\+Detail@{get\+Object\+Detail}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{get\+Object\+Detail(\+String bucket\+Name, String object\+Name)}{getObjectDetail(String bucketName, String objectName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Objectdata} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+get\+Object\+Detail (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0d820a1c0824ade9d5a62f3593df73eb}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0d820a1c0824ade9d5a62f3593df73eb}
+
+
+Returns the information associated with the specified object in the requested bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket where the requested object exists. \\
+\hline
+{\em Object\+Name} & \+: Key of the Object whose information needed to be fetched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1Objectdata}{Objectdata} \+: Returns details related to object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!get\+Presigned\+U\+RL@{get\+Presigned\+U\+RL}}
+\index{get\+Presigned\+U\+RL@{get\+Presigned\+U\+RL}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{get\+Presigned\+U\+R\+L(\+String bucket\+Name, String object\+Name, int expirytime)}{getPresignedURL(String bucketName, String objectName, int expirytime)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+RL org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+get\+Presigned\+U\+RL (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{int}]{expirytime}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3fcbd474e33b3f5368cd91e2af1c8ff4}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3fcbd474e33b3f5368cd91e2af1c8ff4}
+
+
+Returns a U\+RL for accessing a D\+SS resource. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket where the requested object exists. \\
+\hline
+{\em Object\+Name} & \+: Key in the specified bucket under which the desired object is stored. \\
+\hline
+{\em Expirytime} & \+: The time at which the returned pre-\/signed U\+RL will expire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+U\+RL \+: A pre-\/signed U\+RL which expires at the specified time, and can be used to allow anyone to download the specified object from D\+SS, without exposing the owner\textquotesingle{}s J\+CS secret access key. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!get\+Secret\+Key@{get\+Secret\+Key}}
+\index{get\+Secret\+Key@{get\+Secret\+Key}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{get\+Secret\+Key()}{getSecretKey()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+get\+Secret\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3e8946bf410e45e74da79b5c34baedb5}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a3e8946bf410e45e74da79b5c34baedb5}
+
+
+Returns the Secret key entered by client. 
+
+\begin{DoxyReturn}{Returns}
+String \+: Secret\+Key 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!head\+Bucket@{head\+Bucket}}
+\index{head\+Bucket@{head\+Bucket}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{head\+Bucket(\+String bucket\+Name)}{headBucket(String bucketName)}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+head\+Bucket (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aac9f7f5d23874eeaa61c466ce1a0f579}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aac9f7f5d23874eeaa61c466ce1a0f579}
+
+
+Performs head bucket operation to determine if the requested bucket exists and if you have permission to access it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket to execute head\+Bucket operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!head\+Object@{head\+Object}}
+\index{head\+Object@{head\+Object}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{head\+Object(\+String bucket\+Name, String object\+Name)}{headObject(String bucketName, String objectName)}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+head\+Object (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0bc9fd6855f69db8d2a37a0be752c19d}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a0bc9fd6855f69db8d2a37a0be752c19d}
+
+
+Performs head object operation to determine if the requested object in the specified bucket exists and if you have permission to access it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket where the requested object exists. \\
+\hline
+{\em Object\+Name} & \+: Key of the object to execute head\+Object operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!init\+M\+P\+Upload@{init\+M\+P\+Upload}}
+\index{init\+M\+P\+Upload@{init\+M\+P\+Upload}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{init\+M\+P\+Upload(\+String bucket\+Name, String object\+Name)}{initMPUpload(String bucketName, String objectName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Initiate\+Multipart\+Upload\+Result} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+init\+M\+P\+Upload (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad24351a0b8ecaf03f9ed6bb02506f04a}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ad24351a0b8ecaf03f9ed6bb02506f04a}
+
+
+Initiates a multipart upload and returns an \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1InitiateMultipartUploadResult}{Initiate\+Multipart\+Upload\+Result} which contains an upload ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket in which to create the new multipart upload. \\
+\hline
+{\em Object\+Name} & \+: Key by which to store the new multipart upload. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1InitiateMultipartUploadResult}{Initiate\+Multipart\+Upload\+Result} \+: Returns bucket name,key and upload ID related to multipart upload. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!list\+Buckets@{list\+Buckets}}
+\index{list\+Buckets@{list\+Buckets}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{list\+Buckets()}{listBuckets()}}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Bucket}$>$ org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+list\+Buckets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac454ec0fb13b6a8e7e01addbc9255216}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_ac454ec0fb13b6a8e7e01addbc9255216}
+
+
+Returns the List of D\+SS buckets owned by authenticated sender. 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Bucket$>$ \+: List of all buckets. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!list\+M\+P\+Uploads@{list\+M\+P\+Uploads}}
+\index{list\+M\+P\+Uploads@{list\+M\+P\+Uploads}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{list\+M\+P\+Uploads(\+String bucket\+Name)}{listMPUploads(String bucketName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Multipart\+Upload\+Listing} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+list\+M\+P\+Uploads (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a15fe3ef4a3a6bd2bb64ef8e6ed38a59b}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a15fe3ef4a3a6bd2bb64ef8e6ed38a59b}
+
+
+List in-\/progress multipart Uploads associated with the specified bucket and their details. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket whose in-\/progress multipart Uploads need to be listed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1MultipartUploadListing}{Multipart\+Upload\+Listing} \+: Details related to in-\/progress multipart Uploads. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!list\+Objects@{list\+Objects}}
+\index{list\+Objects@{list\+Objects}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{list\+Objects(\+String bucket\+Name)}{listObjects(String bucketName)}}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Dss\+Object}$>$ org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+list\+Objects (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a6b2c8f94a1c223779999361cfa4d2305}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a6b2c8f94a1c223779999361cfa4d2305}
+
+
+Returns the List of objects and its information associated with the requested bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of D\+SS bucket whose objects are need to be listed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$<$\+Dss\+Object$>$ \+: List of all D\+SS objects and their information associated with the requested bucket. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!list\+Part@{list\+Part}}
+\index{list\+Part@{list\+Part}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{list\+Part(\+String bucket\+Name, String object\+Name, String upload\+Id)}{listPart(String bucketName, String objectName, String uploadId)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Part\+Listing} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+list\+Part (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{upload\+Id}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a2deddf3532b4af7a262f42921ad0b828}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a2deddf3532b4af7a262f42921ad0b828}
+
+
+Lists the parts that have been uploaded for the specific multipart upload which is identified by upload ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket containing the multipart upload. \\
+\hline
+{\em Object\+Name} & \+: Key of the associated multipart upload whose parts are being listed. \\
+\hline
+{\em Upload\+Id} & \+: ID of the multipart upload whose parts are being listed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartListing}{Part\+Listing} \+: Returns details of all parts and details of associted multipart upload. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!upload\+Object\+From\+File\+Name@{upload\+Object\+From\+File\+Name}}
+\index{upload\+Object\+From\+File\+Name@{upload\+Object\+From\+File\+Name}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{upload\+Object\+From\+File\+Name(\+String bucket\+Name, String object\+Name, String file\+Path)}{uploadObjectFromFileName(String bucketName, String objectName, String filePath)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Put\+Object\+Result} org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+upload\+Object\+From\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{file\+Path}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aa8b4864c3503f500b53d5da22d44f66f}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_aa8b4864c3503f500b53d5da22d44f66f}
+
+
+Uploads a new file in the specified D\+SS bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the D\+SS bucket to where data need to be uploaded. \\
+\hline
+{\em Object\+Name} & \+: Sets the key under which to store the new object. \\
+\hline
+{\em File\+Path} & \+: Path of the file from where file is need to be uploaded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PutObjectResult}{Put\+Object\+Result} \+: Returns details related to uploaded object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}!upload\+Part@{upload\+Part}}
+\index{upload\+Part@{upload\+Part}!org\+::jcs\+::dss\+::main\+::\+Dss\+Connection@{org\+::jcs\+::dss\+::main\+::\+Dss\+Connection}}
+\subsubsection[{\texorpdfstring{upload\+Part(\+String bucket\+Name, String object\+Name, String upload\+Id, String file\+Path, int part\+Size)}{uploadPart(String bucketName, String objectName, String uploadId, String filePath, int partSize)}}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Upload\+Part\+Result}$>$ org.\+jcs.\+dss.\+main.\+Dss\+Connection.\+upload\+Part (
+\begin{DoxyParamCaption}
+\item[{String}]{bucket\+Name, }
+\item[{String}]{object\+Name, }
+\item[{String}]{upload\+Id, }
+\item[{String}]{file\+Path, }
+\item[{int}]{part\+Size}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a7ade5b9a69b86f1570d80ecf50625897}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1DssConnection_a7ade5b9a69b86f1570d80ecf50625897}
+
+
+Uploads a part in a multipart upload. You must initiate a multipart upload before you can upload any part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Bucket\+Name} & \+: Name of the bucket containing the existing, initiated multipart upload. \\
+\hline
+{\em Object\+Name} & \+: Key of the initiated multipart upload. \\
+\hline
+{\em Upload\+Id} & \+: ID of the existing, initiated multipart upload with which this new part will be associated. \\
+\hline
+{\em File\+Path} & \+: Path of the file which is to be uploaded. \\
+\hline
+{\em Part\+Size} & \+: Size of this part, in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$<$\+Upload\+Part\+Result$>$ \+: Returns list of E\+Tag and part number for each part uploaded. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Dss\+Connection.\+java\end{DoxyCompactItemize}

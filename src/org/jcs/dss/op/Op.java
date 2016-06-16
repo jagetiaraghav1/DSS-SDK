@@ -1,10 +1,8 @@
 package org.jcs.dss.op;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -20,12 +18,6 @@ public abstract class Op {
 	protected String opPath;
 	protected String queryStr;
 	protected String queryStrForSignature;
-	protected String filePath;
-	private static String JcsCopySource;
-	protected int expiryTime;
-	protected String uploadId;
-	protected String partNumber;
-	protected String multipartUpload;
 
 	public  Op(DssConnection conn) {
 		this.conn = conn;
@@ -36,7 +28,7 @@ public abstract class Op {
 		opPath = "";
 	}
 
-	public abstract Object processResult(Object result);
+	public abstract Object processResult(Object result) throws IOException;
 
 	public Response makeRequest() throws Exception {
 		String date = Utils.getCurTimeInGMTString();
@@ -49,27 +41,17 @@ public abstract class Op {
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
-		//System.out.println(signature);
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
 		String request_url = conn.getHost() + opPath;
-		//System.out.println(request_url);
 		if(queryStr != ""){
 			request_url += '?' + queryStr;  
 		}
 		Response resp =  Request.request(httpMethod,request_url,httpHeaders);
-
-
 		return resp;
 	}
 
-	public static String getJcsCopySource() {
-		return JcsCopySource;
-	}
-
-	public void setJcsCopySource(String jcsCopySource) {
-		JcsCopySource = jcsCopySource;
-	}
+	
 
 
 

@@ -1,5 +1,7 @@
 package org.jcs.dss.op;
 
+import java.io.IOException;
+
 import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
 
@@ -23,7 +25,7 @@ public class BucketOp extends Op {
 		return makeRequest();
 	}
 	
-	public Object processResult(Object result){
+	public Object processResult(Object result) throws IOException{
 		return result;
 	}	
 }

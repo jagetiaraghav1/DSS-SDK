@@ -1,25 +1,8 @@
 package org.jcs.dss.examples;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import org.jcs.dss.main.Bucket;
-import org.jcs.dss.main.CompleteMultipartUploadResult;
-import org.jcs.dss.main.DssConnection;
-import org.jcs.dss.main.DssObject;
-import org.jcs.dss.main.InitiateMultipartUploadResult;
-import org.jcs.dss.main.MultipartUpload;
-import org.jcs.dss.main.MultipartUploadListing;
-import org.jcs.dss.main.PartListing;
-import org.jcs.dss.main.PartSummary;
-import org.jcs.dss.main.UploadPartResult;
-import org.jcs.dss.op.ObjectToXML;
-import org.jcs.dss.http.Response;
+import org.jcs.dss.main.*;
 public class DssExample {
 
 	public static void main(String[] args) throws Exception {
@@ -30,19 +13,20 @@ public class DssExample {
 						"http://192.168.56.111:7480");
 
 		//Creates a bucket. Takes bucket name as input
-		/*conn.createBucket("my-new-bucket");*/
-
+		Bucket buck = conn.createBucket("my-new-bucket");
+		System.out.println(buck.getCreationDate());
 		//List all the buckets. First create a List array and call listBuckets() and it will store list of buckets in that array
-		/*List<Bucket> listbucket = new ArrayList<Bucket>();
+		List<Bucket> listbucket = new ArrayList<Bucket>();
 		listbucket = conn.listBuckets();
 		for (int i = 0; i < listbucket.size(); i++) {
 			System.out.println(listbucket.get(i).getName());
-		}*/
+			System.out.println(listbucket.get(i).getOwner());
+		}
 
 		// Uploads object to the bucket.Takes bucketname, filename to be stored in bucket, and path of the file
-		//conn.uploadObjectFromFileName("my-new-bucket", "file.odt","/home/raghav/Desktop/DSS-SDK_explain.odt");
-
-
+		/*PutObjectResult put = conn.uploadObjectFromFileName("my-new-bucket", "file.odt","/home/raghav/Desktop/DSS-SDK_explain.odt");
+		System.out.println(put.getETag());
+*/
 		//List all the objects in a bucket. First create a List array and call listObjects("bucketname") and it will store list of objects in that array 
 	/*	List<DssObject> dssobjects = new ArrayList<DssObject>();
 		dssobjects = conn.listObjects("my-new-bucket");
@@ -50,25 +34,31 @@ public class DssExample {
 			System.out.println(dssobjects.get(i).getBucket());
 		}
 */
-		/*	//Download object from the bucket.Takes bucketname, filename which need to be download from bucket, and path of the file where file need to be saved
-		conn.downloadObjectToFileName("my-bucket","file.mp4","/home/raghav/Desktop/filedownload.mp4");
-
-
+			//Download object from the bucket.Takes bucketname, filename which need to be download from bucket, and path of the file where file need to be saved
+	//	conn.downloadObjectToFileName("my-bucket","file.mp4","/home/raghav/Desktop/filedownload.mp4");
+		//System.out.println(obmeta.getContentType());
+		/*Objectdata ob = conn.getObjectDetail("my-new-bucket", "file.odt");
+		System.out.println(ob.getContentLength());
+		
 
 		//Deletes the object from the bucket. Takes bucket name and object
-		conn.deleteObject("my-new-bucket", "file.mp4");
 
 		// Deletes the bucket. Takes bucket name as input
 		conn.deleteBucket("my-bucket");*/
-		//conn.copyObject("my-new-bucket", "copyTest.mp4", "my-bucket/file.mp4");
-		//conn.headBucket("my-new-bucket");
-		/*Response resp =conn.headObject("my-new-bucket", "file.odt");
+		/*CopyObjectResult copyObject = conn.copyObject("my-new-bucket", "copyTest.mp4", "my-bucket/file.mp4");
+		System.out.println(copyObject.getETag());*/
+	/*	Response resp =conn.headBucket("my-new-bucket");
+		System.out.println(resp.getStatusCode());*/
+
+		/*resp =conn.headObject("my-new-bucket", "file.odt");
 		System.out.println(resp.getStatusCode());*/
 
 
 		//conn.getPresignedURLOp("my-new-bucket", "file.odt", 600);
+		//conn.deleteObject("my-new-bucket", "ubuntu-16.04-desktop-amd64.iso");
+/*
 		String bucketName = "my-new-bucket";
-		String key = "TestVideo";
+		String key = "Testcaseupload";
 		String path = "/home/raghav/Desktop/video.mp4";
 		InitiateMultipartUploadResult initMPUploadOp = new InitiateMultipartUploadResult(null,null,null);
 		initMPUploadOp = conn.initMPUpload(bucketName, key);
@@ -80,7 +70,7 @@ public class DssExample {
 
 		String Uploadid = initMPUploadOp.getUploadId();
 
-		int sizeOfFiles = 1024 * 1024;
+		int sizeOfFiles = 6024 * 1024;
 
 		List<UploadPartResult> Uploadpart = new ArrayList<UploadPartResult>();
 
@@ -117,7 +107,7 @@ public class DssExample {
 			System.out.println(Multipart.get(i).getUploadId());
 
 		}	
-		conn.cancelMPUpload("my-new-bucket",key,Uploadid);
+		//conn.cancelMPUpload("my-new-bucket",key,Uploadid);
 
 		System.out.println("=======");
 		CompleteMultipartUploadResult compmultipart = new CompleteMultipartUploadResult(null,null,null);
@@ -126,7 +116,7 @@ public class DssExample {
 		System.out.println(compmultipart.getETag());
 		System.out.println(compmultipart.getKey());
 
-		
+		*/
 		System.out.println("Done!!!");
 
 
