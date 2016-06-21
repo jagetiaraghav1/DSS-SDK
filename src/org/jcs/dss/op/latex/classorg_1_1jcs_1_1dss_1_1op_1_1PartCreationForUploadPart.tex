@@ -1,0 +1,45 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart}{}\section{org.\+jcs.\+dss.\+op.\+Part\+Creation\+For\+Upload\+Part Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart}\index{org.\+jcs.\+dss.\+op.\+Part\+Creation\+For\+Upload\+Part@{org.\+jcs.\+dss.\+op.\+Part\+Creation\+For\+Upload\+Part}}
+
+
+Class to break file into small parts of size requested by users to execute Upload\+Part A\+PI.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_a4501ffcdcf569756434cb1edfb5e0679}{Part\+Creation\+For\+Upload\+Part} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String upload\+Id, String file\+Path, int part\+Size)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_a4501ffcdcf569756434cb1edfb5e0679}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_a4501ffcdcf569756434cb1edfb5e0679}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+List$<$ Upload\+Part\+Result $>$ \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_aa57ac8879eb545556bf99f7456820461}{create\+Part} ()  throws Exception
+\begin{DoxyCompactList}\small\item\em This method breaks file into smaller parts and creates its Input\+Stream and send to to \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1UploadPartOp}{Upload\+Part\+Op} class to upload it on server and further extracts E\+Tag and part number corresponding to each part. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to break file into small parts of size requested by users to execute Upload\+Part A\+PI. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Part\+Creation\+For\+Upload\+Part@{org\+::jcs\+::dss\+::op\+::\+Part\+Creation\+For\+Upload\+Part}!create\+Part@{create\+Part}}
+\index{create\+Part@{create\+Part}!org\+::jcs\+::dss\+::op\+::\+Part\+Creation\+For\+Upload\+Part@{org\+::jcs\+::dss\+::op\+::\+Part\+Creation\+For\+Upload\+Part}}
+\subsubsection[{\texorpdfstring{create\+Part()}{createPart()}}]{\setlength{\rightskip}{0pt plus 5cm}List$<$Upload\+Part\+Result$>$ org.\+jcs.\+dss.\+op.\+Part\+Creation\+For\+Upload\+Part.\+create\+Part (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_aa57ac8879eb545556bf99f7456820461}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PartCreationForUploadPart_aa57ac8879eb545556bf99f7456820461}
+
+
+This method breaks file into smaller parts and creates its Input\+Stream and send to to \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1UploadPartOp}{Upload\+Part\+Op} class to upload it on server and further extracts E\+Tag and part number corresponding to each part. 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Upload\+Part\+Result$>$ \+: List of E\+Tag and part number associated with each uploaded parts 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Part\+Creation\+For\+Upload\+Part.\+java\end{DoxyCompactItemize}

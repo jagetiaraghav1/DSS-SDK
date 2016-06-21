@@ -2,7 +2,7 @@ package org.jcs.dss.main;
 /// Represents a DSS bucket
 /**
  * 
- *	 Every object stored in JCS DSS is contained within a bucket. . 
+ *	 Every object stored in JCS DSS is contained within a bucket. 
  *	 Within a bucket, any name can be used for objects. However, bucket names must be unique across all of JCS DSS.  
  *	 Ownership of the bucket is retained as long as the owner has an JCS DSS account.
  * 

@@ -1,0 +1,99 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp}{}\section{org.\+jcs.\+dss.\+op.\+Get\+Object\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp}\index{org.\+jcs.\+dss.\+op.\+Get\+Object\+Op@{org.\+jcs.\+dss.\+op.\+Get\+Object\+Op}}
+
+
+Class to download object file from request key to desired path.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+Get\+Object\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a3c6cbde6de75cd9b9c30fd3bdffdbbf5}{Get\+Object\+Op} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String filepath)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a3c6cbde6de75cd9b9c30fd3bdffdbbf5}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a3c6cbde6de75cd9b9c30fd3bdffdbbf5}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a4fa98961dbe836640650a0eeaf1ae330}{execute} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em Executes the method requested by user. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a9323461b3d235ccdd505b09c97e6b796}{make\+Request} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em This method first gets signature, sets http\+Headers and then gets Response object. \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a041a512683b6e12e3da821e680f5b805}{process\+Result} (Object resp)  throws I\+O\+Exception
+\begin{DoxyCompactList}\small\item\em Process final step to download file to desired path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to download object file from request key to desired path. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}!execute@{execute}}
+\index{execute@{execute}!org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}}
+\subsubsection[{\texorpdfstring{execute()}{execute()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Get\+Object\+Op.\+execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a4fa98961dbe836640650a0eeaf1ae330}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a4fa98961dbe836640650a0eeaf1ae330}
+
+
+Executes the method requested by user. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: Gets response object returned from \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a9323461b3d235ccdd505b09c97e6b796}{make\+Request()} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}!make\+Request@{make\+Request}}
+\index{make\+Request@{make\+Request}!org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}}
+\subsubsection[{\texorpdfstring{make\+Request()}{makeRequest()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Get\+Object\+Op.\+make\+Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a9323461b3d235ccdd505b09c97e6b796}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a9323461b3d235ccdd505b09c97e6b796}
+
+
+This method first gets signature, sets http\+Headers and then gets Response object. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: response object by calling request method under Request class 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+Creating object of Dss\+Auth to get signature \index{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Get\+Object\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+Get\+Object\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a041a512683b6e12e3da821e680f5b805}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1GetObjectOp_a041a512683b6e12e3da821e680f5b805}
+
+
+Process final step to download file to desired path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: Response message got from Request.\+request() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String \+: Message for successful or unsuccessful file download 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Get\+Object\+Op.\+java\end{DoxyCompactItemize}

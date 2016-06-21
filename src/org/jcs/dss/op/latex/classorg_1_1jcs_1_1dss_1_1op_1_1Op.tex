@@ -1,0 +1,70 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op}{}\section{org.\+jcs.\+dss.\+op.\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op}\index{org.\+jcs.\+dss.\+op.\+Op@{org.\+jcs.\+dss.\+op.\+Op}}
+
+
+Head Class for all A\+PI operations.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.484848cm]{classorg_1_1jcs_1_1dss_1_1op_1_1Op}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a7a14d5b4d7eb1f579e9e6407ebcafe8e}{Op} (Dss\+Connection conn)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a7a14d5b4d7eb1f579e9e6407ebcafe8e}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a7a14d5b4d7eb1f579e9e6407ebcafe8e}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+abstract Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8d268fda2eaa7be47a818427044189aa}{process\+Result} (Object result)  throws I\+O\+Exception\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8d268fda2eaa7be47a818427044189aa}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8d268fda2eaa7be47a818427044189aa}
+
+\begin{DoxyCompactList}\small\item\em Processes the final result. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8502896422a70d8e8f712b57490b1a91}{make\+Request} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em This method first gets signature, sets http\+Headers and then gets Response object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Dss\+Connection {\bfseries conn}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_ab8a0bdf3a678af61b61af98ea5e26be7}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_ab8a0bdf3a678af61b61af98ea5e26be7}
+
+\item 
+String {\bfseries http\+Method}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a34f4cea450ecada76563c4c9d533c339}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a34f4cea450ecada76563c4c9d533c339}
+
+\item 
+Map$<$ String, String $>$ {\bfseries http\+Headers}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a6db4bcd7b752123a1a85632000e86641}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a6db4bcd7b752123a1a85632000e86641}
+
+\item 
+String {\bfseries op\+Path}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a5f51c19ad6ad5d1b5b701409c824521c}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a5f51c19ad6ad5d1b5b701409c824521c}
+
+\item 
+String {\bfseries query\+Str}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a1705db02225f04d255eb4b5cbac99097}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a1705db02225f04d255eb4b5cbac99097}
+
+\item 
+String {\bfseries query\+Str\+For\+Signature}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_aa6ea39ae1959b6d5cd939c48f22572a8}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_aa6ea39ae1959b6d5cd939c48f22572a8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Head Class for all A\+PI operations. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Op@{org\+::jcs\+::dss\+::op\+::\+Op}!make\+Request@{make\+Request}}
+\index{make\+Request@{make\+Request}!org\+::jcs\+::dss\+::op\+::\+Op@{org\+::jcs\+::dss\+::op\+::\+Op}}
+\subsubsection[{\texorpdfstring{make\+Request()}{makeRequest()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Op.\+make\+Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8502896422a70d8e8f712b57490b1a91}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8502896422a70d8e8f712b57490b1a91}
+
+
+This method first gets signature, sets http\+Headers and then gets Response object. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: response object by calling request method under Request class 
+\end{DoxyReturn}
+Creating object of Dss\+Auth to get signature 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Op.\+java\end{DoxyCompactItemize}

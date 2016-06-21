@@ -1,0 +1,99 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp}{}\section{org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp}\index{org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op@{org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op}}
+
+
+Class to execute method for copying Object from one bucket to another.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a1c6f7605c588295606ee7b073571f688}{Copy\+Object\+Op} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String Jcs\+Copy\+Path)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a1c6f7605c588295606ee7b073571f688}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a1c6f7605c588295606ee7b073571f688}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a025ad8a7df5e040398bba72d1ee50438}{execute} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em Executes the method requested by user. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_ad9ac1d7eaf2ab0be9893b273e955b8e4}{put\+Headers} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em This method assign additional headers which are not present in Op.\+make\+Requests() \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_adceba3616fa9df2c95f22c8979295b78}{process\+Result} (Object resp)  throws I\+O\+Exception
+\begin{DoxyCompactList}\small\item\em This method extracts information about newly copied object such as Last\+Modified and E\+Tag from Input\+Stream got from Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to execute method for copying Object from one bucket to another. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}!execute@{execute}}
+\index{execute@{execute}!org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}}
+\subsubsection[{\texorpdfstring{execute()}{execute()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op.\+execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a025ad8a7df5e040398bba72d1ee50438}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_a025ad8a7df5e040398bba72d1ee50438}
+
+
+Executes the method requested by user. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: Gets response object returned from \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_ad9ac1d7eaf2ab0be9893b273e955b8e4}{put\+Headers()} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_adceba3616fa9df2c95f22c8979295b78}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_adceba3616fa9df2c95f22c8979295b78}
+
+
+This method extracts information about newly copied object such as Last\+Modified and E\+Tag from Input\+Stream got from Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: Response message got from Request.\+put() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy\+Object\+Result \+: A class that contains information about a newly copied object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}!put\+Headers@{put\+Headers}}
+\index{put\+Headers@{put\+Headers}!org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Copy\+Object\+Op}}
+\subsubsection[{\texorpdfstring{put\+Headers()}{putHeaders()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Copy\+Object\+Op.\+put\+Headers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_ad9ac1d7eaf2ab0be9893b273e955b8e4}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CopyObjectOp_ad9ac1d7eaf2ab0be9893b273e955b8e4}
+
+
+This method assign additional headers which are not present in Op.\+make\+Requests() 
+
+\begin{DoxyReturn}{Returns}
+Response \+: Gets response object returned from \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1Op_a8502896422a70d8e8f712b57490b1a91}{make\+Request()} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Copy\+Object\+Op.\+java\end{DoxyCompactItemize}

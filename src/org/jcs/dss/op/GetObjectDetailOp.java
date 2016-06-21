@@ -6,21 +6,28 @@ import java.util.Map;
 import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.main.Objectdata;
+///Class to get details regarding ETag, content Length etc of the requested object
 
 public class GetObjectDetailOp extends ObjectOp{
-
+	///Constructors
 	public GetObjectDetailOp(DssConnection conn, String bucketName, String objectName) {
 		super(conn, bucketName, objectName);
 		httpMethod="GET";
 		opPath = '/' + bucketName + '/' + objectName;
 	}
-	
+
 	@Override
+	///This method extracts information from headers got from server
+	/**
+	 * @param Response : Response message got from Request.request()
+	 * @return Objectdata : Object of a class containing information about requested key
+	 */
 	public Object processResult(Object resp){
 		String ETag = null;
 		String contentLength = null;
 		String contentType = null;
 		String lastModified = null;
+		//Extracting values of ETag, ContentLength etc from headers and storing in local variable
 		for (Map.Entry<String, List<String>> headers : ((Response) resp).getHeaders().entrySet()) {
 			String key = new String();
 			if(headers.getKey()!=null)
@@ -38,7 +45,8 @@ public class GetObjectDetailOp extends ObjectOp{
 				lastModified = valueList.get(0);
 			}
 		}
-		Objectdata objectMetadata = new Objectdata(ETag,contentLength,lastModified,contentType);
-		return objectMetadata;
+		//Creating an object for class Objectdata and assigning values
+		Objectdata objectdata = new Objectdata(ETag,contentLength,lastModified,contentType);
+		return objectdata;
 	}
 }

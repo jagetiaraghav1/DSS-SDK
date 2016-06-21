@@ -1,0 +1,94 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp}{}\section{org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp}\index{org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op@{org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op}}
+
+
+Class to execute Complete multipart upload.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a8736c298c1dca59b038fd44ef2eec39a}{Complete\+M\+P\+Upload\+Op} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String upload\+Id, String multipart\+Upload)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a8736c298c1dca59b038fd44ef2eec39a}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a8736c298c1dca59b038fd44ef2eec39a}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a24540ef77bd0fb6424888b3a6ea2b223}{execute} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em Executes the method requested by user. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_adefa48266f195cbd6baf6d6dd6d093f3}{make\+Request} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em This method first gets signature, sets http\+Headers and then gets Response object. \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a9a5e5ba31cea414e044dce4ba51b3b64}{process\+Result} (Object resp)  throws I\+O\+Exception
+\begin{DoxyCompactList}\small\item\em This method extracts information such as key, E\+Tag etc from Input\+Stream got from Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to execute Complete multipart upload. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}!execute@{execute}}
+\index{execute@{execute}!org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}}
+\subsubsection[{\texorpdfstring{execute()}{execute()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op.\+execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a24540ef77bd0fb6424888b3a6ea2b223}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a24540ef77bd0fb6424888b3a6ea2b223}
+
+
+Executes the method requested by user. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: Gets response object returned from \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_adefa48266f195cbd6baf6d6dd6d093f3}{make\+Request()} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}!make\+Request@{make\+Request}}
+\index{make\+Request@{make\+Request}!org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}}
+\subsubsection[{\texorpdfstring{make\+Request()}{makeRequest()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op.\+make\+Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_adefa48266f195cbd6baf6d6dd6d093f3}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_adefa48266f195cbd6baf6d6dd6d093f3}
+
+
+This method first gets signature, sets http\+Headers and then gets Response object. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: response object by calling put method under request class 
+\end{DoxyReturn}
+Creating object of Dss\+Auth to get signature \index{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op@{org\+::jcs\+::dss\+::op\+::\+Complete\+M\+P\+Upload\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+Complete\+M\+P\+Upload\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a9a5e5ba31cea414e044dce4ba51b3b64}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1CompleteMPUploadOp_a9a5e5ba31cea414e044dce4ba51b3b64}
+
+
+This method extracts information such as key, E\+Tag etc from Input\+Stream got from Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: Response message got from Request.\+put() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Complete\+Multipart\+Upload\+Result \+: A class that contains all the information about a successful uploaded object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Complete\+M\+P\+Upload\+Op.\+java\end{DoxyCompactItemize}

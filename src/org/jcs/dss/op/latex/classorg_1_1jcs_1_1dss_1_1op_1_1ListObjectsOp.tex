@@ -1,0 +1,57 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp}{}\section{org.\+jcs.\+dss.\+op.\+List\+Objects\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp}\index{org.\+jcs.\+dss.\+op.\+List\+Objects\+Op@{org.\+jcs.\+dss.\+op.\+List\+Objects\+Op}}
+
+
+Class to get List of all Objects associated with the requested bucket.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+List\+Objects\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_ae1f56ad3eedea91db238576334238dc6}{List\+Objects\+Op} (Dss\+Connection conn, String bucket\+Name)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_ae1f56ad3eedea91db238576334238dc6}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_ae1f56ad3eedea91db238576334238dc6}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_a78c2014b20163ca5cd5dfd47c4b181f3}{process\+Result} (Object resp)  throws I\+O\+Exception
+\begin{DoxyCompactList}\small\item\em This method extracts information such as Size, Key etc about each object from Input\+Stream got from Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to get List of all Objects associated with the requested bucket. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+List\+Objects\+Op@{org\+::jcs\+::dss\+::op\+::\+List\+Objects\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+List\+Objects\+Op@{org\+::jcs\+::dss\+::op\+::\+List\+Objects\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+List\+Objects\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_a78c2014b20163ca5cd5dfd47c4b181f3}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListObjectsOp_a78c2014b20163ca5cd5dfd47c4b181f3}
+
+
+This method extracts information such as Size, Key etc about each object from Input\+Stream got from Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: Response message got from Request.\+request() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List$<$\+Dss\+Object$>$ \+: List of all D\+SS Objects associated with the requested bucket 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+List\+Objects\+Op.\+java\end{DoxyCompactItemize}

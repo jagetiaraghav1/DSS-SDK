@@ -1,0 +1,57 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp}{}\section{org.\+jcs.\+dss.\+op.\+List\+Part\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp}\index{org.\+jcs.\+dss.\+op.\+List\+Part\+Op@{org.\+jcs.\+dss.\+op.\+List\+Part\+Op}}
+
+
+Class to execute List Part A\+PI.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+List\+Part\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a3783f9f4cfd10805e57756f359a734fe}{List\+Part\+Op} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String upload\+Id)\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a3783f9f4cfd10805e57756f359a734fe}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a3783f9f4cfd10805e57756f359a734fe}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a2dc96679605e098dc2f7f37076cef252}{process\+Result} (Object resp)  throws I\+O\+Exception
+\begin{DoxyCompactList}\small\item\em This method extracts information such as size,part number, E\+Tag etc from Input\+Stream got from Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to execute List Part A\+PI. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+List\+Part\+Op@{org\+::jcs\+::dss\+::op\+::\+List\+Part\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+List\+Part\+Op@{org\+::jcs\+::dss\+::op\+::\+List\+Part\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+List\+Part\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a2dc96679605e098dc2f7f37076cef252}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1ListPartOp_a2dc96679605e098dc2f7f37076cef252}
+
+
+This method extracts information such as size,part number, E\+Tag etc from Input\+Stream got from Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: Response message got from Request.\+request() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Part\+Listing \+: A class that contains all the information about each part associated with the requested key 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+List\+Part\+Op.\+java\end{DoxyCompactItemize}

@@ -1,35 +1,158 @@
 \hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary}{}\section{org.\+jcs.\+dss.\+main.\+Part\+Summary Class Reference}
 \label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary}\index{org.\+jcs.\+dss.\+main.\+Part\+Summary@{org.\+jcs.\+dss.\+main.\+Part\+Summary}}
+
+
+Contains information about each part in a multipart upload, such as part number, size, etc.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\bfseries Part\+Summary} (String Last\+Modified, String Part\+Number, String E\+Tag, String Size)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ac2707032d67ac6f2a9dd7637a0e72473}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ac2707032d67ac6f2a9dd7637a0e72473}
 
 \item 
-String {\bfseries get\+E\+Tag} ()\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a02242db1df4b063bb74e890017a0542c}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a02242db1df4b063bb74e890017a0542c}
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a02242db1df4b063bb74e890017a0542c}{get\+E\+Tag} ()
+\begin{DoxyCompactList}\small\item\em Returns the entity tag generated from the part content. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a30882b2d780f87e0925003d497a2e2e0}{set\+E\+Tag} (String E\+Tag)
+\begin{DoxyCompactList}\small\item\em Sets the entity tag generated from the part content. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a1688671174df7b92a7244e429004b211}{get\+Last\+Modified} ()
+\begin{DoxyCompactList}\small\item\em Returns the date this part was last modified. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a285cc3cbb9df94da270f65543b51fce9}{set\+Last\+Modified} (String Last\+Modified)
+\begin{DoxyCompactList}\small\item\em Sets the date this part was last modified. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad67c10b3a48cbaee701cfb71f3b94b16}{get\+Part\+Number} ()
+\begin{DoxyCompactList}\small\item\em Returns the part number of a part in the multipart upload. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a862ffbd749521c759a5122742b6de395}{set\+Part\+Number} (String Part\+Number)
+\begin{DoxyCompactList}\small\item\em Sets the part number of a part in the multipart upload. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad0e537953c477eef5e63c8ae8efe1410}{get\+Size} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of this part, in bytes. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a5575082eb9ab00c021001414039409e7}{set\+Size} (String Size)
+\begin{DoxyCompactList}\small\item\em Sets the size of this part, in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-void {\bfseries set\+E\+Tag} (String E\+Tag)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a30882b2d780f87e0925003d497a2e2e0}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a30882b2d780f87e0925003d497a2e2e0}
 
-\item 
-String {\bfseries get\+Last\+Modified} ()\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a1688671174df7b92a7244e429004b211}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a1688671174df7b92a7244e429004b211}
+\subsection{Detailed Description}
+Contains information about each part in a multipart upload, such as part number, size, etc. 
 
-\item 
-void {\bfseries set\+Last\+Modified} (String Last\+Modified)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a285cc3cbb9df94da270f65543b51fce9}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a285cc3cbb9df94da270f65543b51fce9}
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!get\+E\+Tag@{get\+E\+Tag}}
+\index{get\+E\+Tag@{get\+E\+Tag}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{get\+E\+Tag()}{getETag()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Part\+Summary.\+get\+E\+Tag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a02242db1df4b063bb74e890017a0542c}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a02242db1df4b063bb74e890017a0542c}
 
-\item 
-String {\bfseries get\+Part\+Number} ()\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad67c10b3a48cbaee701cfb71f3b94b16}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad67c10b3a48cbaee701cfb71f3b94b16}
 
-\item 
-void {\bfseries set\+Part\+Number} (String Part\+Number)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a862ffbd749521c759a5122742b6de395}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a862ffbd749521c759a5122742b6de395}
+Returns the entity tag generated from the part content. 
 
-\item 
-String {\bfseries get\+Size} ()\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad0e537953c477eef5e63c8ae8efe1410}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad0e537953c477eef5e63c8ae8efe1410}
+\begin{DoxyReturn}{Returns}
+E\+Tag 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!get\+Last\+Modified@{get\+Last\+Modified}}
+\index{get\+Last\+Modified@{get\+Last\+Modified}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{get\+Last\+Modified()}{getLastModified()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Part\+Summary.\+get\+Last\+Modified (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a1688671174df7b92a7244e429004b211}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a1688671174df7b92a7244e429004b211}
 
-\item 
-void {\bfseries set\+Size} (String Size)\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a5575082eb9ab00c021001414039409e7}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a5575082eb9ab00c021001414039409e7}
 
-\end{DoxyCompactItemize}
+Returns the date this part was last modified. 
+
+\begin{DoxyReturn}{Returns}
+Last\+Modified 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!get\+Part\+Number@{get\+Part\+Number}}
+\index{get\+Part\+Number@{get\+Part\+Number}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{get\+Part\+Number()}{getPartNumber()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Part\+Summary.\+get\+Part\+Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad67c10b3a48cbaee701cfb71f3b94b16}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad67c10b3a48cbaee701cfb71f3b94b16}
+
+
+Returns the part number of a part in the multipart upload. 
+
+\begin{DoxyReturn}{Returns}
+Part\+Number 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!get\+Size@{get\+Size}}
+\index{get\+Size@{get\+Size}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{get\+Size()}{getSize()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+jcs.\+dss.\+main.\+Part\+Summary.\+get\+Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad0e537953c477eef5e63c8ae8efe1410}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_ad0e537953c477eef5e63c8ae8efe1410}
+
+
+Returns the size of this part, in bytes. 
+
+\begin{DoxyReturn}{Returns}
+Size 
+\end{DoxyReturn}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!set\+E\+Tag@{set\+E\+Tag}}
+\index{set\+E\+Tag@{set\+E\+Tag}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{set\+E\+Tag(\+String E\+Tag)}{setETag(String ETag)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Part\+Summary.\+set\+E\+Tag (
+\begin{DoxyParamCaption}
+\item[{String}]{E\+Tag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a30882b2d780f87e0925003d497a2e2e0}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a30882b2d780f87e0925003d497a2e2e0}
+
+
+Sets the entity tag generated from the part content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em E\+Tag} & \\
+\hline
+\end{DoxyParams}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!set\+Last\+Modified@{set\+Last\+Modified}}
+\index{set\+Last\+Modified@{set\+Last\+Modified}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{set\+Last\+Modified(\+String Last\+Modified)}{setLastModified(String LastModified)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Part\+Summary.\+set\+Last\+Modified (
+\begin{DoxyParamCaption}
+\item[{String}]{Last\+Modified}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a285cc3cbb9df94da270f65543b51fce9}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a285cc3cbb9df94da270f65543b51fce9}
+
+
+Sets the date this part was last modified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Last\+Modified} & \\
+\hline
+\end{DoxyParams}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!set\+Part\+Number@{set\+Part\+Number}}
+\index{set\+Part\+Number@{set\+Part\+Number}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{set\+Part\+Number(\+String Part\+Number)}{setPartNumber(String PartNumber)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Part\+Summary.\+set\+Part\+Number (
+\begin{DoxyParamCaption}
+\item[{String}]{Part\+Number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a862ffbd749521c759a5122742b6de395}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a862ffbd749521c759a5122742b6de395}
+
+
+Sets the part number of a part in the multipart upload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Part\+Number} & \\
+\hline
+\end{DoxyParams}
+\index{org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}!set\+Size@{set\+Size}}
+\index{set\+Size@{set\+Size}!org\+::jcs\+::dss\+::main\+::\+Part\+Summary@{org\+::jcs\+::dss\+::main\+::\+Part\+Summary}}
+\subsubsection[{\texorpdfstring{set\+Size(\+String Size)}{setSize(String Size)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+jcs.\+dss.\+main.\+Part\+Summary.\+set\+Size (
+\begin{DoxyParamCaption}
+\item[{String}]{Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a5575082eb9ab00c021001414039409e7}{}\label{classorg_1_1jcs_1_1dss_1_1main_1_1PartSummary_a5575082eb9ab00c021001414039409e7}
+
+
+Sets the size of this part, in bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Size} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

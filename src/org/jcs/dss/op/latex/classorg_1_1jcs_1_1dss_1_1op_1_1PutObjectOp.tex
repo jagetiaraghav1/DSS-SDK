@@ -1,0 +1,94 @@
+\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp}{}\section{org.\+jcs.\+dss.\+op.\+Put\+Object\+Op Class Reference}
+\label{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp}\index{org.\+jcs.\+dss.\+op.\+Put\+Object\+Op@{org.\+jcs.\+dss.\+op.\+Put\+Object\+Op}}
+
+
+Class to Upload object file to the requested D\+SS bucket.  
+
+
+Inheritance diagram for org.\+jcs.\+dss.\+op.\+Put\+Object\+Op\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_abf3a9721db6ecb0329c028cb0bebdf8d}{Put\+Object\+Op} (Dss\+Connection conn, String bucket\+Name, String object\+Name, String filepath)  throws File\+Not\+Found\+Exception \hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_abf3a9721db6ecb0329c028cb0bebdf8d}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_abf3a9721db6ecb0329c028cb0bebdf8d}
+
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a4858bcd90c98e27c0f123748b09bfee6}{execute} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em Executes the method requested by user. \end{DoxyCompactList}\item 
+Response \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a9f6ab4853d789ba25fe00c1a1a856d40}{make\+Request} ()  throws Exception 
+\begin{DoxyCompactList}\small\item\em This method first gets signature, sets http\+Headers and then gets Response object. \end{DoxyCompactList}\item 
+Object \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a54313a9bfbfe99696c87a5671771712d}{process\+Result} (Object resp)
+\begin{DoxyCompactList}\small\item\em Method to extract E\+Tag and upload date of the uploaded object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class to Upload object file to the requested D\+SS bucket. 
+
+\subsection{Member Function Documentation}
+\index{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}!execute@{execute}}
+\index{execute@{execute}!org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}}
+\subsubsection[{\texorpdfstring{execute()}{execute()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Put\+Object\+Op.\+execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a4858bcd90c98e27c0f123748b09bfee6}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a4858bcd90c98e27c0f123748b09bfee6}
+
+
+Executes the method requested by user. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: Gets response object returned from \hyperlink{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a9f6ab4853d789ba25fe00c1a1a856d40}{make\+Request()} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}!make\+Request@{make\+Request}}
+\index{make\+Request@{make\+Request}!org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}}
+\subsubsection[{\texorpdfstring{make\+Request()}{makeRequest()}}]{\setlength{\rightskip}{0pt plus 5cm}Response org.\+jcs.\+dss.\+op.\+Put\+Object\+Op.\+make\+Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a9f6ab4853d789ba25fe00c1a1a856d40}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a9f6ab4853d789ba25fe00c1a1a856d40}
+
+
+This method first gets signature, sets http\+Headers and then gets Response object. 
+
+\begin{DoxyReturn}{Returns}
+Response \+: response object by calling put method under Request class 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+Creating object of Dss\+Auth to get signature \index{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}!process\+Result@{process\+Result}}
+\index{process\+Result@{process\+Result}!org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op@{org\+::jcs\+::dss\+::op\+::\+Put\+Object\+Op}}
+\subsubsection[{\texorpdfstring{process\+Result(\+Object resp)}{processResult(Object resp)}}]{\setlength{\rightskip}{0pt plus 5cm}Object org.\+jcs.\+dss.\+op.\+Put\+Object\+Op.\+process\+Result (
+\begin{DoxyParamCaption}
+\item[{Object}]{resp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a54313a9bfbfe99696c87a5671771712d}{}\label{classorg_1_1jcs_1_1dss_1_1op_1_1PutObjectOp_a54313a9bfbfe99696c87a5671771712d}
+
+
+Method to extract E\+Tag and upload date of the uploaded object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Response} & \+: response object by calling put method under Request class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Put\+Object\+Result \+: Class containing E\+Tag and Upload date 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Put\+Object\+Op.\+java\end{DoxyCompactItemize}
