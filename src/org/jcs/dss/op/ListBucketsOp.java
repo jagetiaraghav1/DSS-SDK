@@ -15,7 +15,7 @@ import org.xml.sax.InputSource;
 /// Class to get List of all Buckets associated with the this account
 public class ListBucketsOp extends BucketOp {
 	///Constructors
-	public ListBucketsOp(DssConnection conn) {
+	public ListBucketsOp(DssConnection conn) throws UnsupportedEncodingException {
 		super(conn, null);
 		httpMethod = "GET";
 		opPath = "/";

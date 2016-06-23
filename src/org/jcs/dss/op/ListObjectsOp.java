@@ -12,7 +12,7 @@ import org.xml.sax.InputSource;
 /// Class to get List of all Objects associated with the requested bucket
 public class ListObjectsOp extends BucketOp {
 	///Constructors
-	public ListObjectsOp(DssConnection conn, String bucketName) {
+	public ListObjectsOp(DssConnection conn, String bucketName) throws UnsupportedEncodingException {
 		super(conn, bucketName);
 		httpMethod = "GET";
 	}

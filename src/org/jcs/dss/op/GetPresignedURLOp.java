@@ -1,6 +1,8 @@
 package org.jcs.dss.op;
 
 import java.net.URL;
+import java.net.URLEncoder;
+
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.main.DssConnection;
@@ -50,7 +52,7 @@ public class GetPresignedURLOp extends ObjectOp {
 		httpHeaders.put("Date", date);
 		String path = Utils.getEncodedURL(opPath);
 		String request_url = conn.getHost() + path;
-		String EncodedSignature = Utils.getEncodedURL(signature);
+		String EncodedSignature = URLEncoder.encode(signature, "UTF-8");
 		//Generating Presigned URL
 		request_url = request_url + "?AWSAccessKeyId="+ conn.getAccessKey() + "&Expires=" + Integer.toString(expiryTime) + "&Signature=" + EncodedSignature;
 		URL url = new URL(request_url);

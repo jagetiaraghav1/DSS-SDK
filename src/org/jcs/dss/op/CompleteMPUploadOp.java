@@ -83,6 +83,7 @@ public class CompleteMPUploadOp extends ObjectOp{
 		//Reading a InputStream using BufferedReader
 		BufferedReader input = new BufferedReader(new InputStreamReader(data));
 		String XML= input.readLine();
+		//System.out.println(XML);
 		//Creating an object for class CompleteMultipartUploadResult
 		CompleteMultipartUploadResult completeMPup = new  CompleteMultipartUploadResult(null,null, null);
 		//Parsing XML using DocumentBuilderFactory

@@ -11,7 +11,7 @@ import org.xml.sax.InputSource;
 ///Class to list all the on-going MultiPart uploads associated with the requested bucket
 public class ListMPUploadsOp extends BucketOp {
 	///Constructors
-	public ListMPUploadsOp(DssConnection conn, String bucketName) {
+	public ListMPUploadsOp(DssConnection conn, String bucketName) throws UnsupportedEncodingException {
 		super(conn, bucketName);
 		httpMethod = "GET";
 		queryStr = "uploads";

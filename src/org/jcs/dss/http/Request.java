@@ -3,14 +3,17 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.InvalidKeyException;
+import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.net.ssl.*;
+import org.jcs.dss.main.Config;
 /// Class to make connection to JCS DSS Server
 public class Request {
 	///To create connection and to store response in resp object of Response class
 	/**
-	 * 
 	 * @param method : HTTP method
 	 * @param url : Url of the server
 	 * @param headers 
@@ -18,6 +21,41 @@ public class Request {
 	 * @throws Exception
 	 */
 	public static Response request(String method, String url, Map<String, String> headers) throws Exception {
+		// Create a trust manager that does not validate certificate chains
+		if(!Config.isSecure())
+		{
+			TrustManager[] trustAllCerts = new TrustManager[] 
+					{	new X509TrustManager() 
+					{
+						public java.security.cert.X509Certificate[] getAcceptedIssuers() 
+						{
+							return new X509Certificate[0];
+						}
+						public void checkClientTrusted(X509Certificate[] certs, String authType) 
+						{
+						}
+						public void checkServerTrusted(X509Certificate[] certs, String authType) 
+						{
+						}
+					}
+					};
+
+			// Install the all-trusting trust manager
+			SSLContext sc;
+			try 
+			{
+				sc = SSLContext.getInstance("SSL");
+				sc.init(null, trustAllCerts, new java.security.SecureRandom());
+				HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+			} 
+			catch (NoSuchAlgorithmException e) 
+			{
+				e.printStackTrace();
+			} 
+			catch (KeyManagementException e) {
+				e.printStackTrace();
+			}
+		}
 		URL requestUrl = new URL(url);
 		HttpURLConnection Connection = (HttpURLConnection) requestUrl.openConnection();
 		Connection.setDoOutput(true);
@@ -61,6 +99,41 @@ public class Request {
 	 */
 	public static Response Put(String httpMethod,String Url,Map<String, String> HttpHeader,InputStream Data) throws InvalidKeyException, NoSuchAlgorithmException, IOException, ErrorResponse{
 
+		// Create a trust manager that does not validate certificate chains
+		if(!Config.isSecure())
+		{
+			TrustManager[] trustAllCerts = new TrustManager[] 
+					{	new X509TrustManager() 
+					{
+						public java.security.cert.X509Certificate[] getAcceptedIssuers() 
+						{
+							return new X509Certificate[0];
+						}
+						public void checkClientTrusted(X509Certificate[] certs, String authType) 
+						{
+						}
+						public void checkServerTrusted(X509Certificate[] certs, String authType) 
+						{
+						}
+					}
+					};
+
+			// Install the all-trusting trust manager
+			SSLContext sc;
+			try 
+			{
+				sc = SSLContext.getInstance("SSL");
+				sc.init(null, trustAllCerts, new java.security.SecureRandom());
+				HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+			} 
+			catch (NoSuchAlgorithmException e) 
+			{
+				e.printStackTrace();
+			} 
+			catch (KeyManagementException e) {
+				e.printStackTrace();
+			}
+		}
 		URL RequestUrl = new URL(Url);
 		HttpURLConnection Connection = (HttpURLConnection)RequestUrl.openConnection();
 		Connection.setDoOutput(true);
