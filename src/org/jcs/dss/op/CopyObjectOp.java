@@ -54,10 +54,7 @@ public class CopyObjectOp extends ObjectOp{
 	 */
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader in = new BufferedReader(new InputStreamReader(data));
-		String XML= in.readLine();
+		String XML = ((Response) resp).getXMLString();
 		//Creating an object for class CopyObjectResult
 		CopyObjectResult copyObject = new CopyObjectResult(null,null);
 		//Parsing XML using DocumentBuilderFactory

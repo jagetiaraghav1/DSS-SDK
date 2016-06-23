@@ -26,10 +26,7 @@ public class ListPartOp extends ObjectOp{
 	 */
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String xml= input.readLine();
+		String xml = ((Response) resp).getXMLString();
 		//Creating an object for class PartListing
 		PartListing partList = new PartListing(null,null,null,null,null,null,null,null,null);
 		//Creating an List object for class PartSummary 

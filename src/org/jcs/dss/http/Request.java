@@ -67,7 +67,7 @@ public class Request {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
 		}
 		//Creating connection
-		Connection.connect();
+		//Connection.connect();
 		Response resp = new Response ();
 		//If Operation succeed 
 		if (Connection.getResponseCode() == 200 || Connection.getResponseCode() == 204) {
@@ -75,11 +75,15 @@ public class Request {
 			resp.setStatusMsg(Connection.getResponseMessage());
 			resp.setHeaders(Connection.getHeaderFields());
 			resp.setData(Connection.getInputStream());
+			BufferedReader input = new BufferedReader(new InputStreamReader(Connection.getInputStream()));
+			String XML= input.readLine();
+			resp.setXMLString(XML);
 		}
 		//If operation fails throw ErrorException 
 		else {
 			throw (new ErrorResponse(Connection.getResponseCode(),Connection.getResponseMessage(),Connection.getErrorStream()));
 		}
+		Connection.disconnect();
 		return resp;
 
 	}
@@ -144,7 +148,7 @@ public class Request {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
 		}
 		//Creating connection
-		Connection.connect();
+		//Connection.connect();
 		//Uploading Data in smaller parts of 4096 byte by reading data in buffer and then writing till the end of file
 		DataOutputStream out = new DataOutputStream(Connection.getOutputStream());
 		byte[] buffer = new byte[4096];
@@ -162,12 +166,14 @@ public class Request {
 			resp.setStatusMsg(Connection.getResponseMessage());
 			resp.setHeaders(Connection.getHeaderFields());
 			resp.setData(Connection.getInputStream());
+			BufferedReader input = new BufferedReader(new InputStreamReader(Connection.getInputStream()));
+			String XML= input.readLine();
+			resp.setXMLString(XML);
 		} 
 		//If operation fails throw ErrorException 
 		else {
 			throw (new ErrorResponse(Connection.getResponseCode(),Connection.getResponseMessage(),Connection.getErrorStream()));
 		}
-
 		Connection.disconnect();
 		return resp;
 	}

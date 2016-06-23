@@ -24,10 +24,7 @@ public class ListObjectsOp extends BucketOp {
 	 */
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String XML= input.readLine();
+		String XML = ((Response) resp).getXMLString();
 		//Creating an List object for class DssObject
 		List<DssObject> DssObjectList = new ArrayList<DssObject>();
 		//Parsing XML using DocumentBuilderFactory

@@ -79,11 +79,7 @@ public class CompleteMPUploadOp extends ObjectOp{
 	 * @throws IOException
 	 */
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String XML= input.readLine();
-		//System.out.println(XML);
+		String XML = ((Response) resp).getXMLString();
 		//Creating an object for class CompleteMultipartUploadResult
 		CompleteMultipartUploadResult completeMPup = new  CompleteMultipartUploadResult(null,null, null);
 		//Parsing XML using DocumentBuilderFactory

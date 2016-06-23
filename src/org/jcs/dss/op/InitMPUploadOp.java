@@ -26,10 +26,7 @@ public class InitMPUploadOp extends ObjectOp{
 
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String XML= input.readLine();
+		String XML = ((Response) resp).getXMLString();
 		//Creating an object for class InitiateMultipartUploadResult
 		InitiateMultipartUploadResult imitMPupload = new  InitiateMultipartUploadResult(null,null, null);
 		//Parsing XML using DocumentBuilderFactory

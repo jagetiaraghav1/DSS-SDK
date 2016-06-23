@@ -8,6 +8,7 @@ public class Response {
 
 	private int statusCode;
 	private String statusMsg;
+	private String Xml;
 	private Map<String, List<String>> headers;
 	private InputStream data;
 	///Returns Status Code
@@ -26,6 +27,7 @@ public class Response {
 	public void setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
 	}
+	
 	///Return Response Message
 	/**
 	 * 
@@ -42,6 +44,22 @@ public class Response {
 	public void setStatusMsg(String statusMsg) {
 		this.statusMsg = statusMsg;
 	}
+	///Return XML String
+		/**
+		 * 
+		 * @return Xml
+		 */
+		public String getXMLString() {
+			return Xml;
+		}
+		///Sets Xml String
+		/**
+		 * 
+		 * @param Xml
+		 */
+		public void setXMLString(String Xml) {
+			this.Xml = Xml;
+		}
 	/// Returns List of Headers
 	/**
 	 *  

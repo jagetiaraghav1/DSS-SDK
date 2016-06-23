@@ -28,10 +28,7 @@ public class ListBucketsOp extends BucketOp {
 	 */
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String XML=input.readLine();
+		String XML = ((Response) resp).getXMLString();
 		//Parsing XML using DocumentBuilderFactory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		//Creating an List object for class Bucket
@@ -46,7 +43,7 @@ public class ListBucketsOp extends BucketOp {
 			NodeList List1 = doc.getElementsByTagName("Owner");
 			Node Node1 = List1.item(0);
 			if (Node1.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
-				Element Element1 = (Element) Node1;
+				Element Element1 = (Element) Node1;	
 				// Extracting owner's ID from XML String and storing in local variable
 				owner = Element1.getElementsByTagName("ID").item(0).getTextContent();
 			}

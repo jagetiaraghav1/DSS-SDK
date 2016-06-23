@@ -25,10 +25,7 @@ public class ListMPUploadsOp extends BucketOp {
 	 */
 	@Override
 	public Object processResult(Object resp) throws IOException{
-		InputStream data = ((Response) resp).getData();
-		//Reading a InputStream using BufferedReader
-		BufferedReader input = new BufferedReader(new InputStreamReader(data));
-		String XML= input.readLine();
+		String XML = ((Response) resp).getXMLString();
 		//Creating an object for class MultipartUploadListing
 		MultipartUploadListing multipartUploadList = new MultipartUploadListing(null,null,null,null,null);
 		//Creating an List object for class MultipartUpload 
