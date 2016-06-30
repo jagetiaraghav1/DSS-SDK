@@ -15,12 +15,22 @@ public class DssConnection {
 	private String accessKey;
 	private String secretKey;
 	private String host;
+	private static boolean isSecure;
 	/// Constructors
-	public DssConnection(String accessKey, String secretKey, String host) {
+	public DssConnection(String accessKey, String secretKey, String host,boolean isSecure) {
+		DssConnection.isSecure = isSecure;
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 		this.host = host;
 	}
+	/// Returns if the connection is secure or not
+		/**
+		 * 
+		 * @return String : isSecure	
+		 */
+		public static boolean getIsSecure() {
+			return isSecure;
+		}
 	/// Returns the Access key entered by client
 	/**
 	 * 

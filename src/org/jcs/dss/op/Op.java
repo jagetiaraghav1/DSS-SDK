@@ -44,7 +44,6 @@ public abstract class Op {
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
-		System.out.println(signature);
 		//Assigning headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
