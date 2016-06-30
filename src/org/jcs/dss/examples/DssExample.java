@@ -20,7 +20,7 @@ public class DssExample {
 		String Bucket = "my-hello-bucket";
 		String Key = "newObject";
 		String UploadPath = "/home/raghav/Desktop/video1.mp4";
-		String DownloadPath = "/home/raghav/Desktop/filedownload.mp4";	
+		String DownloadPath = "/home/raghav/Desktop/download.mp4";	
 		String JCSCopySource = "";
 		int ExpiryTime = 600;
 		int SizeOfFiles = 6024*1024;

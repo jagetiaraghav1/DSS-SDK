@@ -134,7 +134,7 @@ public class DssConnection {
 	public void downloadObjectToFileName(String bucketName, String objectName,
 			String filePath) throws Exception {
 		GetObjectOp op = new GetObjectOp(this, bucketName,objectName,filePath);
-		Response resp = op.execute();
+		String resp = op.Execute();
 		op.processResult(resp);
 	}
 	///Returns the information associated with the specified object in the requested bucket

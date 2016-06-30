@@ -2,10 +2,10 @@ package org.jcs.dss.op;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map.Entry;
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
-import org.jcs.dss.http.Request;
-import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.utils.Utils;
 /// Class to download object file from request key to desired path
@@ -24,17 +24,17 @@ public class GetObjectOp extends ObjectOp {
 	 * @return Response : Gets response object returned from makeRequest()
 	 * @throws Exception
 	 */
-	@Override
-	public Response execute() throws Exception {
-		return makeRequest();
+	
+	public String Execute() throws Exception {
+		return MakeRequest();
 	}
 	///This method first gets signature, sets httpHeaders and then gets Response object
 	/**
 	 * @return Response : response object by calling request method under Request class
 	 * @throws Exception
 	 */
-	@Override
-	public Response makeRequest() throws Exception {
+	
+	public String MakeRequest() throws Exception {
 		String date = Utils.getCurTimeInGMTString();
 		///Creating object of DssAuth to get signature
 		DssAuth authentication = new DssAuthBuilder()
@@ -51,8 +51,9 @@ public class GetObjectOp extends ObjectOp {
 		String path = Utils.getEncodedURL(opPath);
 		String request_url = conn.getHost() + path;
 		//Calling Request.request method to get inputStream
-		Response resp = Request.request("GET", request_url,httpHeaders);
-		return resp;
+		//Response resp = Request.request("GET", request_url,httpHeaders);
+		
+		return request_url;
 	}
 
 	@Override
@@ -63,10 +64,19 @@ public class GetObjectOp extends ObjectOp {
 	 * @throws IOException
 	 */
 	public Object processResult(Object resp) throws IOException{
-		int responseCode = ((Response) resp).getStatusCode();
+		
+		URL requestUrl = new URL((String) resp);
+		HttpURLConnection Connection = (HttpURLConnection) requestUrl.openConnection();
+		Connection.setDoOutput(true);
+		Connection.setDoInput(true);
+		//Setting HTTP Method
+		Connection.setRequestMethod("GET");
+		// Setting request headers
+		for(Entry<String, String> entry : httpHeaders.entrySet()) {
+			Connection.setRequestProperty(entry.getKey(), entry.getValue());
+		}
 		//Checks if server has returned message OK 
-		if (responseCode == HttpURLConnection.HTTP_OK) {
-			InputStream inputStream = ((Response) resp).getData();
+			InputStream inputStream = Connection.getInputStream();
 			String saveFilePath = filePath;
 			FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 			int bytesRead = -1;
@@ -77,13 +87,9 @@ public class GetObjectOp extends ObjectOp {
 			}
 			outputStream.close();
 			inputStream.close();
+			Connection.disconnect();
 			//Success message
 			String message = "File Downloaded";
 			return message;
-		} else {
-			//Failure message
-			String errormessage = "No file to download. Server replied HTTP code: " + responseCode;
-			return errormessage;
-		}
 	}
 }
