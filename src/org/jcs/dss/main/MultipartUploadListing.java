@@ -2,23 +2,24 @@ package org.jcs.dss.main;
 
 import java.util.ArrayList;
 import java.util.List;
-///The List<MultipartUploadListing> contains all the information about the listMPUploads method.
-public class MultipartUploadListing {
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+///The List<MultipartUploadListing> contains all the information about the listMPUploads method.
+@XmlRootElement(name = "ListMultipartUploadsResult")
+public class MultipartUploadListing {
+	
+	@XmlElement (name = "Bucket")
 	private String bucketName;
+	@XmlElement (name = "NextKeyMarker")
 	private String nextKeyMarker;
+	@XmlElement (name = "NextUploadIdMarker")
 	private String nextUploadIdMarker ;
+	@XmlElement (name = "MaxUploads")
 	private String MaxUploads;
+	@XmlElement (name="Upload")
 	private List<MultipartUpload> multipartup = new ArrayList<MultipartUpload>();
-	///Constructors
-	public MultipartUploadListing(String bucketName, String nextKeyMarker,String nextUploadIdMarker,String MaxUploads,List<MultipartUpload> multipartup) {
-		super();
-		this.bucketName = bucketName;
-		this.MaxUploads = MaxUploads;
-		this.nextUploadIdMarker=nextUploadIdMarker;
-		this.nextKeyMarker = nextKeyMarker;
-		this.multipartup = multipartup;
-	}
+
 	///Returns the name of the bucket containing the listed multipart uploads.
 	/**
 	 * @return BucketName
@@ -31,7 +32,7 @@ public class MultipartUploadListing {
 	 * 
 	 * @param BucketName
 	 */
-	public void setbucketName(String bucketName) {
+	void setbucketName(String bucketName) {
 		this.bucketName = bucketName;
 	}
 	///Returns the optional maximum number of uploads to be listed.
@@ -47,7 +48,7 @@ public class MultipartUploadListing {
 	 * 
 	 * @param MaxUploads
 	 */
-	public void setMaxUploads(String MaxUploads) {
+	void setMaxUploads(String MaxUploads) {
 		this.MaxUploads = MaxUploads;
 	}
 	///Returns the next upload ID marker that should be used in the next request to get the next page of results.
@@ -63,7 +64,7 @@ public class MultipartUploadListing {
 	 * 
 	 * @param NextUploadIdMarker
 	 */
-	public void setNextUploadIdMarker(String nextUploadIdMarker) {
+	void setNextUploadIdMarker(String nextUploadIdMarker) {
 		this.nextUploadIdMarker = nextUploadIdMarker;
 	}
 	///Returns the next key marker that should be used in the next request to get the next page of results.
@@ -79,7 +80,7 @@ public class MultipartUploadListing {
 	 * 
 	 * @param NextKeyMarker
 	 */
-	public void setNextKeyMarker(String nextKeyMarker) {
+	void setNextKeyMarker(String nextKeyMarker) {
 		this.nextKeyMarker = nextKeyMarker;
 	}
 	///Returns the list of multipart uploads.
@@ -95,7 +96,7 @@ public class MultipartUploadListing {
 	 * 
 	 * @param multipartup : List of multipart uploads.
 	 */
-	public void setMultipartUploads(List<MultipartUpload> multipartup) {
+	 void setMultipartUploads(List<MultipartUpload> multipartup) {
 		this.multipartup = multipartup;
 	}
 }

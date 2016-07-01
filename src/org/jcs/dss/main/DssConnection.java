@@ -5,7 +5,6 @@ import org.jcs.dss.http.Response;
 import org.jcs.dss.op.*;
 ///Provides an interface to the client for accessing the JCS DSS web service.
 /**
-
   		 The JCS DSS java-sdk  provides a interface that can be used to store and retrieve any amount of data, at any time, from anywhere on the web.
 
  */
@@ -89,11 +88,10 @@ public class DssConnection {
 	 * @return List<DssObject> : List of all DSS objects and their information associated with the requested bucket.
 	 * @throws Exception
 	 */
-	public List<DssObject> listObjects(String bucketName) throws Exception {
+	public DssObject listObjects(String bucketName) throws Exception {
 		ListObjectsOp op = new ListObjectsOp(this, bucketName);
 		Response resp = op.execute();
-		@SuppressWarnings("unchecked")
-		List<DssObject> objectList = (List<DssObject>) op.processResult(resp);
+		DssObject objectList = (DssObject) op.processResult(resp);
 		return objectList;
 	}
 	///Deletes the requested bucket
@@ -306,3 +304,4 @@ public class DssConnection {
 		op.execute();
 	}
 }
+

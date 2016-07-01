@@ -1,38 +1,36 @@
 package org.jcs.dss.main;
+
+import javax.xml.bind.annotation.XmlElement;
+
 ///The MultipartUpload contains all the information about each individual multipart upload like their key, uploadID etc.
 
 public class MultipartUpload {
-
+	@XmlElement (name = "Initiated")
 	private String initiated;
+	@XmlElement (name = "Key")
 	private String key;
+	@XmlElement (name = "UploadId")
 	private String uploadId;
-	private String initiator;
-	private String owner;
+	@XmlElement (name = "Initiator")
+	private Initiator initiator;
+	@XmlElement (name = "Owner")
+	private Owner owner;
+	@XmlElement (name = "StorageClass")
 	private String storageClass;
-	///Constructors
-	public MultipartUpload( String key,String uploadId, String initiator, String owner, String storageClass,String initiated) {
-		super();
-		this.key = key;
-		this.uploadId=uploadId;
-		this.initiator = initiator;
-		this.owner = owner;
-		this.storageClass= storageClass;
-		this.initiated = initiated;
-	}
 	///Returns the user who initiated this multipart upload.
 	/**
 	 * 
 	 * @return initiator
 	 */
 	public String getInitiator() {
-		return initiator;
+		return initiator.getInitiator();
 	}
 	/// Sets the user who initiated this multipart upload.
 	/**
 	 * 
 	 * @param initiator
 	 */
-	public void setInitiator(String initiator) {
+	void setInitiator(Initiator initiator) {
 		this.initiator = initiator;
 	}
 	///Returns the key by which this upload is stored.
@@ -48,7 +46,7 @@ public class MultipartUpload {
 	 * 
 	 * @param key
 	 */
-	public void setKey(String key) {
+	void setKey(String key) {
 		this.key = key;
 	}
 	///Returns the unique ID of this multipart upload.
@@ -64,7 +62,7 @@ public class MultipartUpload {
 	 * 
 	 * @param uploadId
 	 */
-	public void setUpoadId(String uploadId) {
+	void setUpoadId(String uploadId) {
 		this.uploadId = uploadId;
 	}
 	///Returns the owner of this multipart upload.
@@ -73,14 +71,14 @@ public class MultipartUpload {
 	 * @return Owner
 	 */
 	public String getOwner() {
-		return owner;
+		return owner.getDisplayName();
 	}
 	/// Sets the owner of this multipart upload.
 	/**
 	 * 
 	 * @param owner
 	 */
-	public void setOwner(String owner) {
+	void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 	///Returns the storage class indicating how the data in this multipart upload will be stored.
@@ -96,7 +94,7 @@ public class MultipartUpload {
 	 * 
 	 * @param storageClass
 	 */
-	public void setStorageClass(String storageClass) {
+	void setStorageClass(String storageClass) {
 		this.storageClass = storageClass;
 	}
 	///Returns the date at which this upload was initiated.
@@ -112,7 +110,7 @@ public class MultipartUpload {
 	 * 
 	 * @param initiated
 	 */
-	public void setInitiated(String initiated) {
+	void setInitiated(String initiated) {
 		this.initiated = initiated;
 	}
 }

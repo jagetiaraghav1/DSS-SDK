@@ -16,7 +16,7 @@ public class ObjectToXML {
 	 * @throws JAXBException
 	 * @throws IOException
 	 */
-	public static String GenrateXML(List<UploadPartResult> Uploadpart) throws JAXBException, IOException {
+	public   String GenrateXML(List<UploadPartResult> Uploadpart) throws JAXBException, IOException {
 		StringWriter xml = new StringWriter();
 		JAXBContext jaxbContext = JAXBContext.newInstance(Part.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

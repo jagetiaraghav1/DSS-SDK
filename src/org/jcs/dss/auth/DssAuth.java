@@ -3,6 +3,7 @@ import java.io.UnsupportedEncodingException;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+
 import org.jcs.dss.utils.Utils;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -81,6 +82,9 @@ public class DssAuth {
 		byte[] result = mac.doFinal(cannonicalStrBytes);
 		///Encoding to base64
 		String b64_hmac = DatatypeConverter.printBase64Binary(result);
+		//System.out.println(b64_hmac);
+		//String b64_hmac=android.util.Base64.encodeToString(result, 16) ;
+		//System.out.println(b64_hmac);
 		String auth = "";
 		if (useTimeInSeconds) {
 			auth = b64_hmac;

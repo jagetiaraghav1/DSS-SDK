@@ -17,10 +17,11 @@ public class DssExample {
 						"OfKjGgFzcrRgi7JSyCaM3qZc8fqWXshFYMGyXQ7b",
 						"http://192.168.56.111:7480",false);
 
-		String Bucket = "my-hello-bucket";
-		String Key = "newObject";
-		String UploadPath = "/home/raghav/Desktop/video1.mp4";
-		String DownloadPath = "/home/raghav/Desktop/download.mp4";	
+
+		String Bucket = "DSS-bucket";
+		String Key = "new_object";
+		String UploadPath = "/home/raghav/Desktop/video.mp4";
+		String DownloadPath = "/home/raghav/Desktop/newVideo.mp4";	
 		String JCSCopySource = "";
 		int ExpiryTime = 600;
 		int SizeOfFiles = 6024*1024;
@@ -31,10 +32,10 @@ public class DssExample {
 		for(int j = 0;j<1000;j++){
 			while(num!=-1){
 				System.out.print("Enter number: ");
-				num = scan.nextInt()	;
+				num = scan.nextInt();
 
-			//System.out.println("Test Number ====================================================="+ j);
-		/*	for(int k =1; k<15;k++){
+				//System.out.println("Test Number ====================================================="+ j);
+				/*	for(int k =1; k<15;k++){
 				if(k!=7 && k!=8 && k!=9 )
 					num = k;
 				else
@@ -54,6 +55,7 @@ public class DssExample {
 					List<Bucket> listbuckets = new ArrayList<Bucket>();
 					listbuckets = conn.listBuckets();
 					System.out.println("List Bucket API : ");
+					System.out.println(listbuckets.size());
 					for (int i = 0; i < listbuckets.size(); i++) {
 						System.out.println("{"+(i+1)+"} : ");
 						System.out.println("Bucket Name : " +listbuckets.get(i).getName());
@@ -68,16 +70,20 @@ public class DssExample {
 					System.out.println("Upload Date : "+PutObject.getUploadDate());
 					break;
 				case 4 :
-					List<DssObject> Dssobjects = new ArrayList<DssObject>();
+					DssObject Dssobjects = new DssObject();
 					Dssobjects = conn.listObjects(Bucket);
 					System.out.println("List Object API : ");
-					System.out.println("Bucket Name" +Dssobjects.get(0).getBucket());
-					for (int i = 0; i < Dssobjects.size(); i++) {
+					System.out.println(Dssobjects.getBucket());
+					System.out.println(Dssobjects.getMaxKeys());
+					List<DSSObjectSummary> dssObjectSummary = new ArrayList<DSSObjectSummary>();
+					dssObjectSummary = Dssobjects.getDSSObjectSummary();
+					for (int i = 0; i < dssObjectSummary.size(); i++) {
 						System.out.println("{"+(i+1)+"} : ");
-						System.out.println("Object Name : " + Dssobjects.get(i).getName());
-						System.out.println("Object Owner : "+Dssobjects.get(i).getOwnerId());
-						System.out.println("Last Modified Date : " +Dssobjects.get(i).getLastModified());
-						System.out.println("Object Size : " +Dssobjects.get(i).getSize());
+						System.out.println("Bucket Name : " +dssObjectSummary.get(i).getETag());
+						System.out.println("Object Name : " + dssObjectSummary.get(i).getName());
+						System.out.println("Object Owner : "+dssObjectSummary.get(i).getOwner());
+						System.out.println("Last Modified Date : " +dssObjectSummary.get(i).getLastModified());
+						System.out.println("Object Size : " +dssObjectSummary.get(i).getSize());
 					}
 					break;
 				case 5:
@@ -133,6 +139,7 @@ public class DssExample {
 					String	UploadId = InitMPUploadOp.getUploadId();
 					System.out.println("===================================================");
 
+				
 					List<UploadPartResult> uploadpart = new ArrayList<UploadPartResult>();
 					System.out.println("Upload Part API : ");
 					uploadpart = conn.uploadPart(Bucket, Key, UploadId, UploadPath,SizeOfFiles);
@@ -144,8 +151,9 @@ public class DssExample {
 
 					System.out.println("===================================================");
 
-
-					String	XmlString = ObjectToXML.GenrateXML(uploadpart);
+					ObjectToXML ob = new ObjectToXML();
+					String	XmlString = ob.GenrateXML(uploadpart);
+					
 					PartListing PartList = new PartListing(null,null,null,null,null,null,null,null,null);
 					System.out.println("List Part API : ");
 					PartList = conn.listPart(Bucket, Key, UploadId);
@@ -167,7 +175,7 @@ public class DssExample {
 						System.out.println("Last Modified : "+PartSummary.get(i).getLastModified());
 						System.out.println("PartNumber : "+PartSummary.get(i).getPartNumber());
 					}	
-					System.out.println("===================================================");
+					
 					/*System.out.print("Press 1 to complete multipart upload or 2 to abort: ");
 					c = scan.nextInt();*/
 					c=1;
@@ -183,6 +191,11 @@ public class DssExample {
 						conn.cancelMPUpload(Bucket,Key,UploadId);
 					else
 						System.out.println("Invalid Operation");
+
+					System.out.println("===================================================");
+
+				
+
 					break;
 				case 14 : 
 

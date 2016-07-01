@@ -1,14 +1,18 @@
 package org.jcs.dss.op;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.*;
+import javax.xml.transform.Source;
+import javax.xml.transform.sax.SAXSource;
 import org.jcs.dss.http.Response;
 import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.main.DssObject;
-import org.w3c.dom.*;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 /// Class to get List of all Objects associated with the requested bucket
 public class ListObjectsOp extends BucketOp {
 	///Constructors
@@ -25,42 +29,26 @@ public class ListObjectsOp extends BucketOp {
 	@Override
 	public Object processResult(Object resp) throws IOException{
 		String XML = ((Response) resp).getXMLString();
-		//Creating an List object for class DssObject
-		List<DssObject> DssObjectList = new ArrayList<DssObject>();
-		//Parsing XML using DocumentBuilderFactory
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		String Bucket = null;
+		JAXBContext jaxbContext;
 		try {
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			//Type casting a string to a Document
-			Document doc= db.parse(new InputSource(new StringReader(XML)));
-			doc.getDocumentElement().normalize();
-			NodeList List = doc.getElementsByTagName("ListBucketResult");
-			Node Node = List.item(0);
-			if (Node.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
-				Element Element = (Element) Node;
-				// Extracting bucket name from XML String and storing in local variable
-				Bucket = Element.getElementsByTagName("Name").item(0).getTextContent();
-			}
-			NodeList nList = doc.getElementsByTagName("Contents");
-			// Running for loop to get complete list of objects
-			for (int temp = 0; temp < nList.getLength(); temp++) {
-				Node nNode = nList.item(temp);
-				if (nNode.getNodeType() ==org.w3c.dom.Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					// Extracting parameters from XML String and adding in DssObjectList object
-					DssObject temp1 = new DssObject(Bucket,
-							eElement.getElementsByTagName("Key").item(0).getTextContent(),
-							eElement.getElementsByTagName("LastModified").item(0).getTextContent(),
-							eElement.getElementsByTagName("Size").item(0).getTextContent(),
-							eElement.getElementsByTagName("ID").item(0).getTextContent());
-					DssObjectList.add(temp1);
-				}
-			}
-		}catch(Exception e) {
+			jaxbContext = JAXBContext.newInstance(DssObject.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			//Filter Namespace
+			final SAXParserFactory sax = SAXParserFactory.newInstance();
+			sax.setNamespaceAware(false);
+			final XMLReader reader = sax.newSAXParser().getXMLReader();
+			final Source er = new SAXSource(reader, new InputSource(new StringReader(XML)));
+			
+			return (DssObject) jaxbUnmarshaller.unmarshal(er);
+			
+		} catch (JAXBException e) {
+			e.printStackTrace();
+			System.out.println("JAXB Error");
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}
-
-		return DssObjectList;
-	}
+		return null;
+	}				
 }
