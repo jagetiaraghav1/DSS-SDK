@@ -3,6 +3,7 @@ package org.jcs.dss.op;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -17,6 +18,8 @@ public abstract class Op {
 	protected String opPath;
 	protected String queryStr;
 	protected String queryStrForSignature;
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
+
 	///Constructors
 	public  Op(DssConnection conn) {
 		this.conn = conn;
@@ -44,6 +47,8 @@ public abstract class Op {
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
+		//logger.setLevel(Level.WARNING);
+		logger.info("Signature : " + signature);
 		//Assigning headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);

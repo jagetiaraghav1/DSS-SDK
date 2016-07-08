@@ -30,7 +30,7 @@ public class UploadPartResult {
 	 * 
 	 * @param ETag
 	 */
-	public void setEtag(String ETag) {
+	void setEtag(String ETag) {
 		this.ETag = ETag;
 	}
 	///Returns the part number of the newly uploaded part.
@@ -46,7 +46,7 @@ public class UploadPartResult {
 	 * 
 	 * @param PartNumber
 	 */
-	public void setPartNumber(String PartNumber) {
+	void setPartNumber(String PartNumber) {
 		this.partNumber = PartNumber;
 	}	
 }

@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
-
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.utils.Utils;
 /// Class to download object file from request key to desired path
-public class GetObjectOp extends ObjectOp {
-	private String filePath;
+public class GetFileOp extends ObjectOp {
+	private File file;
 	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
-
 	///Constructors
-	public GetObjectOp(DssConnection conn, String bucketName, String objectName,String filepath) {
+	public GetFileOp(DssConnection conn, String bucketName, String objectName,File file) {
 		super(conn, bucketName, objectName);
-		filePath= filepath;
+		this.file= file;
 		httpMethod="GET";
 		opPath = '/' + bucketName + '/' + objectName;
 	}
@@ -56,10 +54,7 @@ public class GetObjectOp extends ObjectOp {
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
 		String path = Utils.getEncodedURL(opPath);
-		String request_url = conn.getHost() + path;
-		//Calling Request.request method to get inputStream
-		//Response resp = Request.request("GET", request_url,httpHeaders);
-
+		String request_url = conn.getHost() + path;		
 		return request_url;
 	}
 
@@ -73,6 +68,7 @@ public class GetObjectOp extends ObjectOp {
 	public Object processResult(Object resp) throws IOException{
 
 		URL requestUrl = new URL((String) resp);
+		logger.info("URL : " + requestUrl);
 		HttpURLConnection Connection = (HttpURLConnection) requestUrl.openConnection();
 		Connection.setDoOutput(true);
 		Connection.setDoInput(true);
@@ -97,8 +93,7 @@ public class GetObjectOp extends ObjectOp {
 				logger.info("Headers (Recieved from Server) : "+ key +" : " + valueList.get(j) );
 			}
 		}
-		String saveFilePath = filePath;
-		FileOutputStream outputStream = new FileOutputStream(saveFilePath);
+		FileOutputStream outputStream = new FileOutputStream(this.file);
 		int bytesRead = -1;
 		//Reads 4096 bytes at a time till the end of file and writes it using FileOutputStream.write() to the desired location
 		byte[] buffer = new byte[4096];

@@ -1,6 +1,8 @@
 package org.jcs.dss.op;
 
 import java.io.InputStream;
+import java.util.logging.Logger;
+
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -11,6 +13,7 @@ import org.jcs.dss.utils.Utils;
 public class UploadPartOp extends ObjectOp{
 
 	private InputStream inStream = null;
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 	///Constructors
 	public UploadPartOp(DssConnection conn, String bucketName, String objectName,String uploadId,String partNumber, InputStream inStream) {
 		super(conn, bucketName, objectName);
@@ -50,6 +53,7 @@ public class UploadPartOp extends ObjectOp{
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
+		logger.info("Signature : " + signature);
 		//Assigning headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);

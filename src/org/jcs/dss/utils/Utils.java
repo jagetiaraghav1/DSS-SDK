@@ -21,7 +21,7 @@ public class Utils {
 		Date curTime = calendar.getTime();
 		String curTimeStr = new SimpleDateFormat("EE", Locale.ENGLISH)
 				.format(curTime.getTime());
-		String dateStr = curTimeStr + ", " + dateGMTStr;
+		String dateStr = curTimeStr	 + ", " + dateGMTStr;
 		return dateStr;
 	}
 	///This method returns the URL Encoded String

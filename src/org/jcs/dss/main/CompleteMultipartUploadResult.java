@@ -5,7 +5,7 @@ public class CompleteMultipartUploadResult {
 	private String bucketName;
 	private String key;
 	private String ETag;
-///Constructors
+	///Constructors
 	public CompleteMultipartUploadResult(String bucketName, String key,String ETag) {
 		super();
 		this.bucketName = bucketName;
@@ -25,7 +25,7 @@ public class CompleteMultipartUploadResult {
 	 * 
 	 * @param BucketName
 	 */
-	public void setbucketName(String bucketName) {
+	void setbucketName(String bucketName) {
 		this.bucketName = bucketName;
 	}
 	///Returns the key by which the newly created object is stored.
@@ -41,7 +41,7 @@ public class CompleteMultipartUploadResult {
 	 * 
 	 * @param Key
 	 */
-	public void setKey(String key) {
+	void setKey(String key) {
 		this.key = key;
 	}
 	///Returns the entity tag identifying the new object.
@@ -56,7 +56,7 @@ public class CompleteMultipartUploadResult {
 	 * 
 	 * @param ETag
 	 */
-	public void setETag(String ETag) {
+	void setETag(String ETag) {
 		this.ETag = ETag;
 	}
 }

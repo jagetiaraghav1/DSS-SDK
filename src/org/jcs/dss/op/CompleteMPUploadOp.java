@@ -2,6 +2,8 @@ package org.jcs.dss.op;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.jcs.dss.auth.DssAuth;
@@ -15,7 +17,7 @@ import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 ///Class to execute Complete multipart upload
 public class CompleteMPUploadOp extends ObjectOp{
-
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 	private String multipartUpload;
 	///Constructors
 	public CompleteMPUploadOp(DssConnection conn, String bucketName, String objectName,String uploadId,String multipartUpload) {
@@ -54,6 +56,7 @@ public class CompleteMPUploadOp extends ObjectOp{
 				.queryStr(queryStr)
 				.build();
 		String signature = authentication.getSignature();
+		logger.info("Signature : " + signature);
 		// Creating inputstream of Xml string, named by multipartUpload
 		InputStream object = new ByteArrayInputStream(multipartUpload.getBytes(StandardCharsets.UTF_8));
 		//Assigning headers

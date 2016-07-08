@@ -1,8 +1,9 @@
 package org.jcs.dss.op;
 
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -15,14 +16,14 @@ import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.main.PutObjectResult;
 import org.jcs.dss.utils.Utils;
 /// Class to Upload object file to the requested DSS bucket
-public class PutObjectOp extends ObjectOp{
-	private String filePath;
+public class PutStringOp extends ObjectOp{
+	private String UploadString;
 	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 
 	///Constructors
-	public PutObjectOp(DssConnection conn,String bucketName, String objectName,String filepath) throws FileNotFoundException {
+	public PutStringOp(DssConnection conn,String bucketName, String objectName,String UploadString) throws FileNotFoundException {
 		super(conn,bucketName,objectName);
-		filePath= filepath;
+		this.UploadString= UploadString;
 		httpMethod="PUT";
 		opPath = '/' + bucketName + '/' + objectName;
 	}
@@ -55,8 +56,8 @@ public class PutObjectOp extends ObjectOp{
 				.build();
 		String signature = authentication.getSignature();
 		logger.info("Signature : " + signature);
-		// Creating inputstream of File to be uploaded
-		InputStream object = new FileInputStream(filePath);
+		// Creating inputstream of String to be uploaded
+		InputStream object = new ByteArrayInputStream(UploadString.getBytes(StandardCharsets.UTF_8));
 		//Assigning Headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);

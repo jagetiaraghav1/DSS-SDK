@@ -26,7 +26,7 @@ public class CopyObjectResult {
 	 * 
 	 * @param ETag
 	 */
-	public void setEtag(String ETag) {
+	void setEtag(String ETag) {
 		this.ETag = ETag;
 	}
 
@@ -43,7 +43,7 @@ public class CopyObjectResult {
 	 * 
 	 * @param LastModifiedDate
 	 */
-	public void setLastModifiedDate(String lastModifiedDate) {
+	void setLastModifiedDate(String lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 }

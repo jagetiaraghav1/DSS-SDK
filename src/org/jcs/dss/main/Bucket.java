@@ -32,7 +32,7 @@ public class Bucket {
 	 * 
 	 * @param BucketName : The name for the bucket.
 	 */
-	public void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 	/// Returns creation date of the bucket
@@ -48,7 +48,7 @@ public class Bucket {
 	 * 
 	 * @param CreationDate.
 	 */
-	public void setCreationDate(String creationDate) {
+	void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 	/// Returns Owner of the Owner of the bucket
@@ -64,7 +64,7 @@ public class Bucket {
 	 * 
 	 * @param Owner
 	 */
-	public void setOwner(String Owner) {
+	void setOwner(String Owner) {
 		this.Owner = Owner;
 	}
 }

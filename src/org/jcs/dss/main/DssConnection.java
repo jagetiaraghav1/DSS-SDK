@@ -1,6 +1,10 @@
 package org.jcs.dss.main;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
+import java.util.logging.*;
 import org.jcs.dss.http.Response;
 import org.jcs.dss.op.*;
 ///Provides an interface to the client for accessing the JCS DSS web service.
@@ -15,21 +19,37 @@ public class DssConnection {
 	private String secretKey;
 	private String host;
 	private static boolean isSecure;
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
+	private static FileHandler fh = null;
 	/// Constructors
 	public DssConnection(String accessKey, String secretKey, String host,boolean isSecure) {
 		DssConnection.isSecure = isSecure;
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 		this.host = host;
+		try {  
+			// This block configure the logger with handler and formatter  
+			fh = new FileHandler("/home/raghav/Desktop/logfile.log");  
+			logger.addHandler(fh);
+			SimpleFormatter formatter = new SimpleFormatter();  
+			fh.setFormatter(formatter);  
+			logger.setUseParentHandlers(false);
+
+			// the following statement is used to log any messages  
+		} catch (SecurityException e) {  
+			e.printStackTrace();  
+		} catch (IOException e) {  
+			e.printStackTrace();  
+		}  
 	}
 	/// Returns if the connection is secure or not
-		/**
-		 * 
-		 * @return String : isSecure	
-		 */
-		public static boolean getIsSecure() {
-			return isSecure;
-		}
+	/**
+	 * 
+	 * @return String : isSecure	
+	 */
+	public static boolean getIsSecure() {
+		return isSecure;
+	}
 	/// Returns the Access key entered by client
 	/**
 	 * 
@@ -63,6 +83,7 @@ public class DssConnection {
 	 * @throws Exception
 	 */
 	public Bucket createBucket(String bucketName) throws Exception {
+
 		CreateBucketOp op = new CreateBucketOp(this, bucketName);
 		op.execute();
 		Bucket bucket = (Bucket) op.processResult(bucketName);
@@ -121,6 +142,55 @@ public class DssConnection {
 		PutObjectResult putObject = (PutObjectResult) op.processResult(resp);
 		return putObject;
 	}
+	///Uploads a new data in the form of string in the specified DSS bucket 
+	/**
+	 * 
+	 * @param BucketName : Name of the DSS bucket to where data need to be uploaded.
+	 * @param ObjectName : Sets the key under which to store the new object.
+	 * @param UploadString : String whose data is need to be uploaded.
+	 * @return PutObjectResult : Returns details related to uploaded object.
+	 * @throws Exception
+	 */
+	public PutObjectResult uploadObjectfromString(String bucketName, String objectName,
+			String UploadString) throws Exception {
+		PutStringOp op = new PutStringOp(this,bucketName,objectName,UploadString);
+		Response resp = op.execute();	
+		PutObjectResult putObject = (PutObjectResult) op.processResult(resp);
+		return putObject;
+	}
+	///Uploads a new file in the specified DSS bucket 
+	/**
+	 * 
+	 * @param BucketName : Name of the DSS bucket to where data need to be uploaded.
+	 * @param ObjectName : Sets the key under which to store the new object.
+	 * @param File : File which is need to be uploaded.
+	 * @return PutObjectResult : Returns details related to uploaded object.
+	 * @throws Exception
+	 */
+	public PutObjectResult uploadObjectFromFile(String bucketName, String objectName,
+			File file) throws Exception {
+		PutFileOp op = new PutFileOp(this,bucketName,objectName,file);
+		Response resp = op.execute();	
+		PutObjectResult putObject = (PutObjectResult) op.processResult(resp);
+		return putObject;
+	}
+
+	///Uploads a new file in the specified DSS bucket 
+	/**
+	 * 
+	 * @param BucketName : Name of the DSS bucket to where data need to be uploaded.
+	 * @param ObjectName : Sets the key under which to store the new object.
+	 * @param inputStream : inputStream of the content need to be uploaded.
+	 * @return PutObjectResult : Returns details related to uploaded object.
+	 * @throws Exception
+	 */
+	public PutObjectResult uploadObjectFromInputStream(String bucketName, String objectName,
+			InputStream inputStream) throws Exception {
+		PutInputStreamOp op = new PutInputStreamOp(this,bucketName,objectName,inputStream);
+		Response resp = op.execute();	
+		PutObjectResult putObject = (PutObjectResult) op.processResult(resp);
+		return putObject;
+	}
 	///Downloads the requested object from the specified bucket to the requested file path
 	/**
 	 * 
@@ -132,6 +202,20 @@ public class DssConnection {
 	public void downloadObjectToFileName(String bucketName, String objectName,
 			String filePath) throws Exception {
 		GetObjectOp op = new GetObjectOp(this, bucketName,objectName,filePath);
+		String resp = op.Execute();
+		op.processResult(resp);
+	}
+	///Downloads the requested object from the specified bucket to the requested file 
+	/**
+	 * 
+	 * @param BucketName : Name of the DSS bucket from where data need to be download.
+	 * @param ObjectName : Sets the key under which object is stored.
+	 * @param File : File where file is need to be download.
+	 * @throws Exception
+	 */
+	public void downloadObjectToFileName(String bucketName, String objectName,
+			File file) throws Exception {
+		GetFileOp op = new GetFileOp(this, bucketName,objectName,file);
 		String resp = op.Execute();
 		op.processResult(resp);
 	}

@@ -15,15 +15,7 @@ public class DssObject {
 	private String MaxKeys;
 	@XmlElement (name ="Contents")
 	private List<DSSObjectSummary> DSSObjectSummary =  new ArrayList<DSSObjectSummary>();
-	/*/// Constructors
-	public DssObject(String bucket,String name,String lastModified,String size,String ownerId) {
-		super();
-		this.name = name;
-		this.bucket = bucket;
-		this.lastModified=lastModified;
-		this.ownerId=ownerId;
-		this.size=size;
-	}*/
+	
 	/// Returns the name of the JCS DSS bucket containing the list of objects listed in DssObject
 	/**
 	 * 

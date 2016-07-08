@@ -2,6 +2,7 @@ package org.jcs.dss.op;
 
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.logging.Logger;
 
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
@@ -12,6 +13,7 @@ import org.jcs.dss.utils.Utils;
 public class GetPresignedURLOp extends ObjectOp {
 	private int expiry;
 	private int expiryTime;
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 	///Constructors
 	public GetPresignedURLOp(DssConnection conn, String bucketName, String objectName,int Expiry) {
 		super(conn, bucketName, objectName);
@@ -46,7 +48,7 @@ public class GetPresignedURLOp extends ObjectOp {
 				.useTimeInSeconds(true)
 				.build();
 		String signature = authentication.getSignature();	
-		System.out.println(signature);
+		logger.info("Signature : " + signature);
 		//Assigning headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);

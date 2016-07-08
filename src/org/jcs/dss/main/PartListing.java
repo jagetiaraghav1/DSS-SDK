@@ -38,7 +38,7 @@ public class PartListing {
 	 * 
 	 * @param bucketName
 	 */
-	public void setbucketName(String bucketName) {
+	void setbucketName(String bucketName) {
 		this.bucketName = bucketName;
 	}
 	///Returns the optional max parts value to limit how many parts are listed.
@@ -54,7 +54,7 @@ public class PartListing {
 	 * 
 	 * @param MaxParts
 	 */
-	public void setMaxParts(String MaxParts) {
+	void setMaxParts(String MaxParts) {
 		this.MaxParts = MaxParts;
 	}
 	///Returns the key value to identify which multipart upload contains the parts to list.
@@ -70,7 +70,7 @@ public class PartListing {
 	 * 
 	 * @param Key
 	 */
-	public void setKey(String Key) {
+	void setKey(String Key) {
 		this.Key = Key;
 	}
 	///Returns the upload ID value used to identify which multipart upload contains the parts to list
@@ -86,7 +86,7 @@ public class PartListing {
 	 * 
 	 * @param UploadId
 	 */
-	public void setUploadId(String UploadId) {
+	void setUploadId(String UploadId) {
 		this.UploadId = UploadId;
 	}
 	///Returns the part number marker to specify where in the results to begin listing parts.
@@ -102,7 +102,7 @@ public class PartListing {
 	 * 
 	 * @param PartNumberMarker
 	 */
-	public void setPartNumberMarker(String PartNumberMarker) {
+	void setPartNumberMarker(String PartNumberMarker) {
 		this.PartNumberMarker = PartNumberMarker;
 	}
 	///Returns the next part number marker.
@@ -118,7 +118,7 @@ public class PartListing {
 	 * 
 	 * @param NextPartNumberMarker
 	 */
-	public void setNextPartNumberMarker(String NextPartNumberMarker) {
+	void setNextPartNumberMarker(String NextPartNumberMarker) {
 		this.NextPartNumberMarker = NextPartNumberMarker;
 	}
 	///Returns the class of storage used for the parts in the associated multipart upload.
@@ -134,7 +134,7 @@ public class PartListing {
 	 * 
 	 * @param StorageClass
 	 */
-	public void setStorageClass(String StorageClass) {
+	void setStorageClass(String StorageClass) {
 		this.StorageClass = StorageClass;
 	}
 	///Returns ID of the user who owns the associated multipart upload.
@@ -150,7 +150,7 @@ public class PartListing {
 	 * 
 	 * @param owner
 	 */
-	public void setOwner(String owner) {
+	void setOwner(String owner) {
 		this.owner = owner;
 	}
 	///Returns the list of parts and detail of each individual part.
@@ -166,7 +166,7 @@ public class PartListing {
 	 * 
 	 * @param partDetails : List of parts
 	 */
-	public void setParts(List<PartSummary> partDetails) {
+	void setParts(List<PartSummary> partDetails) {
 		this.partDetails = partDetails;
 	}
 

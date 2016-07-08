@@ -27,7 +27,7 @@ public class PartSummary {
 	 * 
 	 * @param ETag
 	 */
-	public void setETag(String ETag) {
+	void setETag(String ETag) {
 		this.ETag = ETag;
 	}
 	///Returns the date this part was last modified.
@@ -43,7 +43,7 @@ public class PartSummary {
 	 * 
 	 * @param LastModified
 	 */
-	public void setLastModified(String LastModified) {
+	void setLastModified(String LastModified) {
 		this.LastModified = LastModified;
 	}
 	///Returns the part number of a part in the multipart upload.
@@ -59,7 +59,7 @@ public class PartSummary {
 	 * 
 	 * @param PartNumber
 	 */
-	public void setPartNumber(String PartNumber) {
+	void setPartNumber(String PartNumber) {
 		this.PartNumber = PartNumber;
 	}
 	///Returns the size of this part, in bytes.
@@ -75,7 +75,7 @@ public class PartSummary {
 	 * 
 	 * @param Size
 	 */
-	public void setSize(String Size) {
+	void setSize(String Size) {
 		this.Size = Size;
 	}
 }

@@ -1,5 +1,8 @@
 package org.jcs.dss.examples;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +12,20 @@ import org.jcs.dss.main.*;
 import org.jcs.dss.op.ObjectToXML;
 public class DssExample {
 	private static Scanner scan;
-
 	public static void main(String[] args) throws Exception {
 		// To connect to the Dss Server.Takes access key, secret key and host of the resource
 		DssConnection conn = new DssConnection
 				("Y7PUMEKBZORIP07W2A1W",
 						"OfKjGgFzcrRgi7JSyCaM3qZc8fqWXshFYMGyXQ7b",
 						"http://192.168.56.111:7480",false);
-
-
 		String Bucket = "DSS-bucket";
-		String Key = "new_object";
+		String Key = "Put-String-object";
+		File Upload = new File("/home/raghav/Desktop/video.mp4");
+		File Download = new File("/home/raghav/Desktop/videos.mp4");	
 		String UploadPath = "/home/raghav/Desktop/video.mp4";
-		String DownloadPath = "/home/raghav/Desktop/newVideo.mp4";	
+		String DownloadPath = "/home/raghav/Desktop/newVideo1.txt";	
+		InputStream inputStream = new FileInputStream("/home/raghav/Desktop/video.mp4");
+		String UploadString = "Hello World!!!";
 		String JCSCopySource = "";
 		int ExpiryTime = 600;
 		int SizeOfFiles = 6024*1024;
@@ -69,6 +73,24 @@ public class DssExample {
 					System.out.println("ETag : "+PutObject.getETag());
 					System.out.println("Upload Date : "+PutObject.getUploadDate());
 					break;
+				case 15 :
+					PutObjectResult PutObject1 = conn.uploadObjectFromFile(Bucket, Key,Upload);
+					System.out.println("Put Object API : ");
+					System.out.println("ETag : "+PutObject1.getETag());
+					System.out.println("Upload Date : "+PutObject1.getUploadDate());
+					break;
+				case 16 :
+					PutObjectResult PutObject2 = conn.uploadObjectFromInputStream(Bucket, Key,inputStream);
+					System.out.println("Put Object API : ");
+					System.out.println("ETag : "+PutObject2.getETag());
+					System.out.println("Upload Date : "+PutObject2.getUploadDate());
+					break;
+				case 17 :
+					PutObjectResult PutObject3 = conn.uploadObjectfromString(Bucket, Key,UploadString);
+					System.out.println("Put Object API : ");
+					System.out.println("ETag : "+PutObject3.getETag());
+					System.out.println("Upload Date : "+PutObject3.getUploadDate());
+					break;
 				case 4 :
 					DssObject Dssobjects = new DssObject();
 					Dssobjects = conn.listObjects(Bucket);
@@ -89,6 +111,10 @@ public class DssExample {
 				case 5:
 					System.out.println("Download Object API");
 					conn.downloadObjectToFileName(Bucket,Key,DownloadPath);
+					break;
+				case 18:
+					System.out.println("Download Object API");
+					conn.downloadObjectToFileName(Bucket,Key,Download);
 					break;
 				case 6:
 					Objectdata objectdata = conn.getObjectDetail(Bucket, Key);
@@ -139,7 +165,7 @@ public class DssExample {
 					String	UploadId = InitMPUploadOp.getUploadId();
 					System.out.println("===================================================");
 
-				
+
 					List<UploadPartResult> uploadpart = new ArrayList<UploadPartResult>();
 					System.out.println("Upload Part API : ");
 					uploadpart = conn.uploadPart(Bucket, Key, UploadId, UploadPath,SizeOfFiles);
@@ -153,7 +179,7 @@ public class DssExample {
 
 					ObjectToXML ob = new ObjectToXML();
 					String	XmlString = ob.GenrateXML(uploadpart);
-					
+
 					PartListing PartList = new PartListing(null,null,null,null,null,null,null,null,null);
 					System.out.println("List Part API : ");
 					PartList = conn.listPart(Bucket, Key, UploadId);
@@ -175,7 +201,7 @@ public class DssExample {
 						System.out.println("Last Modified : "+PartSummary.get(i).getLastModified());
 						System.out.println("PartNumber : "+PartSummary.get(i).getPartNumber());
 					}	
-					
+
 					/*System.out.print("Press 1 to complete multipart upload or 2 to abort: ");
 					c = scan.nextInt();*/
 					c=1;
@@ -194,13 +220,13 @@ public class DssExample {
 
 					System.out.println("===================================================");
 
-				
+
 
 					break;
 				case 14 : 
 
 					MultipartUploadListing MultipartUpload= conn.listMPUploads(Bucket);
-					System.out.println("List MultiPart Upload API : ");
+					System.out.println("List MultiPart Upload API : ");	
 					System.out.println("Bucket Name : "+ MultipartUpload.getbucketName());
 					System.out.println("Max Uploads : " +MultipartUpload.getMaxUploads());
 					System.out.println("Next Key Marker : "+MultipartUpload.getNextKeyMarker());

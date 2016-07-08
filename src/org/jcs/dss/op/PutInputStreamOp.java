@@ -1,12 +1,11 @@
 package org.jcs.dss.op;
 
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-
 import org.jcs.dss.auth.DssAuth;
 import org.jcs.dss.auth.DssAuthBuilder;
 import org.jcs.dss.http.Request;
@@ -15,14 +14,14 @@ import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.main.PutObjectResult;
 import org.jcs.dss.utils.Utils;
 /// Class to Upload object file to the requested DSS bucket
-public class PutObjectOp extends ObjectOp{
-	private String filePath;
+public class PutInputStreamOp extends ObjectOp{
+	private InputStream inputStream;
 	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 
 	///Constructors
-	public PutObjectOp(DssConnection conn,String bucketName, String objectName,String filepath) throws FileNotFoundException {
+	public PutInputStreamOp(DssConnection conn,String bucketName, String objectName,InputStream inputStream) throws FileNotFoundException {
 		super(conn,bucketName,objectName);
-		filePath= filepath;
+		this.inputStream= inputStream;
 		httpMethod="PUT";
 		opPath = '/' + bucketName + '/' + objectName;
 	}
@@ -55,12 +54,10 @@ public class PutObjectOp extends ObjectOp{
 				.build();
 		String signature = authentication.getSignature();
 		logger.info("Signature : " + signature);
-		// Creating inputstream of File to be uploaded
-		InputStream object = new FileInputStream(filePath);
 		//Assigning Headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
-		httpHeaders.put("Content-Length", Integer.toString(object.available()));
+		httpHeaders.put("Content-Length", Integer.toString(inputStream.available()));
 		httpHeaders.put("Content-Type", "application/octet-stream");
 		String path = Utils.getEncodedURL(opPath);
 		String request_url = conn.getHost() + path;
@@ -68,7 +65,7 @@ public class PutObjectOp extends ObjectOp{
 			request_url += '?' + queryStr;  
 		}
 		//Calling Request.put to complete file upload
-		Response resp =  Request.Put(httpMethod,request_url,httpHeaders,object);
+		Response resp =  Request.Put(httpMethod,request_url,httpHeaders,inputStream);
 		return resp;
 	}
 

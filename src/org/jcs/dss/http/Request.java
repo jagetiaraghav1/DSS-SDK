@@ -6,12 +6,17 @@ import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;		
 import javax.net.ssl.*;
 import org.jcs.dss.main.Config;
+import org.jcs.dss.main.DssConnection;
+
 /// Class to make connection to JCS DSS Server
 public class Request {
+	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 	///To create connection and to store response in resp object of Response class
 	/**
 	 * @param method : HTTP method
@@ -57,14 +62,18 @@ public class Request {
 			}
 		}
 		URL requestUrl = new URL(url);
+
+		logger.info("URL : " + requestUrl);
 		HttpURLConnection Connection = (HttpURLConnection) requestUrl.openConnection();
 		Connection.setDoOutput(true);
 		Connection.setDoInput(true);
 		//Setting HTTP Method
 		Connection.setRequestMethod(method);
+		logger.info("HTTP Method : " + method);
 		// Setting request headers
 		for(Entry<String, String> entry : headers.entrySet()) {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
+			logger.info("Headers(Given to server) : "+ entry.getKey() + " : " + entry.getValue());
 		}
 		//Creating connection
 		//Connection.connect();
@@ -74,6 +83,17 @@ public class Request {
 			resp.setStatusCode(Connection.getResponseCode());
 			resp.setStatusMsg(Connection.getResponseMessage());
 			resp.setHeaders(Connection.getHeaderFields());
+			for (Map.Entry<String, List<String>> header : ((Response) resp).getHeaders().entrySet()) {
+				String key = new String();
+				if(header.getKey()!=null)
+					key = header.getKey();
+				else
+					key = "null";
+				List<String> valueList = header.getValue();
+				for(int j=0;j<valueList.size();j++){
+					logger.info("Headers (Recieved from Server) : "+ key +" : " + valueList.get(j) );
+				}
+			}
 			resp.setData(Connection.getInputStream());
 			BufferedReader input = new BufferedReader(new InputStreamReader(Connection.getInputStream()));
 			String XML= input.readLine();
@@ -139,13 +159,16 @@ public class Request {
 			}
 		}
 		URL RequestUrl = new URL(Url);
+		logger.info("URL : " + RequestUrl);
 		HttpURLConnection Connection = (HttpURLConnection)RequestUrl.openConnection();
 		Connection.setDoOutput(true);
 		//Setting HTTP Method
 		Connection.setRequestMethod(httpMethod);
+		logger.info("HTTP Method : " + httpMethod);
 		// Setting request headers
 		for(Entry<String, String> entry : HttpHeader.entrySet()) {
 			Connection.setRequestProperty(entry.getKey(), entry.getValue());
+			logger.info("Headers(Given to server) : "+ entry.getKey() + " : " + entry.getValue());
 		}
 		//Creating connection
 		//Connection.connect();
@@ -165,6 +188,17 @@ public class Request {
 			resp.setStatusCode(Connection.getResponseCode());
 			resp.setStatusMsg(Connection.getResponseMessage());
 			resp.setHeaders(Connection.getHeaderFields());
+			for (Map.Entry<String, List<String>> header : ((Response) resp).getHeaders().entrySet()) {
+				String key = new String();
+				if(header.getKey()!=null)
+					key = header.getKey();
+				else
+					key = "null";
+				List<String> valueList = header.getValue();
+				for(int j=0;j<valueList.size();j++){
+					logger.info("Headers (Recieved from Server) : "+ key +" : " + valueList.get(j) );
+				}
+			}
 			resp.setData(Connection.getInputStream());
 			BufferedReader input = new BufferedReader(new InputStreamReader(Connection.getInputStream()));
 			String XML= input.readLine();

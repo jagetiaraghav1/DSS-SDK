@@ -31,7 +31,7 @@ public class Objectdata {
 	 * 
 	 * @param ETag
 	 */
-	public void setETag(String ETag) {
+	void setETag(String ETag) {
 		this.ETag = ETag;
 	}
 
@@ -48,38 +48,38 @@ public class Objectdata {
 	 * 
 	 * @param ContentLength
 	 */
-	public void setContentLength(String contentLength) {
+	void setContentLength(String contentLength) {
 		this.contentLength = contentLength;
 	}
 	/// Returns the date this object was last modified
-		/**
-		 * 
-		 * @return LastModifiedDate
-		 */
+	/**
+	 * 
+	 * @return LastModifiedDate
+	 */
 	public String getLastModified() {
 		return lastModified;
 	}
 	/// Sets the date this object was last modified
-		/**
-		 * 
-		 * @param LastModifiedDate
-		 */
-	public void setLastModified(String lastModified) {
+	/**
+	 * 
+	 * @param LastModifiedDate
+	 */
+	void setLastModified(String lastModified) {
 		this.lastModified = lastModified;
 	}
 	/// Sets the content-type of the specified object.
-		/**
-		 * 
-		 * @return ContentType
-		 */
+	/**
+	 * 
+	 * @return ContentType
+	 */
 	public String getContentType() {
 		return contentType;
 	}
 	/// Returns the content-type of the specified object.
-		/**
-		 * 
-		 * @param ContentType
-		 */
+	/**
+	 * 
+	 * @param ContentType
+	 */
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}

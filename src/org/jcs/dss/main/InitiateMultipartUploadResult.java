@@ -24,7 +24,7 @@ public class InitiateMultipartUploadResult {
 	 * 
 	 * @param BucketName
 	 */
-	public void setbucketName(String bucketName) {
+	void setbucketName(String bucketName) {
 		this.bucketName = bucketName;
 	}
 	///Returns the object key for which the multipart upload was initiated.
@@ -39,7 +39,7 @@ public class InitiateMultipartUploadResult {
 	 * 
 	 * @param Key
 	 */
-	public void setKey(String key) {
+	void setKey(String key) {
 		this.key = key;
 	}
 	///Returns the initiated multipart upload ID.
@@ -55,7 +55,7 @@ public class InitiateMultipartUploadResult {
 	 * 
 	 * @param UploadID
 	 */
-	public void setUpoadId(String uploadId) {
+	void setUpoadId(String uploadId) {
 		this.uploadId = uploadId;
 	}
 }

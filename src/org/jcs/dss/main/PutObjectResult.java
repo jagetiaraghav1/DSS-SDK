@@ -27,7 +27,7 @@ public class PutObjectResult {
 	 * 
 	 * @param ETag
 	 */
-	public void setEtag(String ETag) {
+	void setEtag(String ETag) {
 		this.ETag = ETag;
 	}
 	/// Returns the upload date of the newly created object.
@@ -43,7 +43,7 @@ public class PutObjectResult {
 	 * 
 	 * @param UploadDate
 	 */
-	public void setUploadDate(String uploadDate) {
+	void setUploadDate(String uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 }

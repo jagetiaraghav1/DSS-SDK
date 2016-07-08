@@ -1,5 +1,6 @@
 package org.jcs.dss.op;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -15,14 +16,14 @@ import org.jcs.dss.main.DssConnection;
 import org.jcs.dss.main.PutObjectResult;
 import org.jcs.dss.utils.Utils;
 /// Class to Upload object file to the requested DSS bucket
-public class PutObjectOp extends ObjectOp{
-	private String filePath;
+public class PutFileOp extends ObjectOp{
+	private File file;
 	private static final Logger logger= Logger.getLogger( DssConnection.class.getName() );
 
 	///Constructors
-	public PutObjectOp(DssConnection conn,String bucketName, String objectName,String filepath) throws FileNotFoundException {
+	public PutFileOp(DssConnection conn,String bucketName, String objectName,File file) throws FileNotFoundException {
 		super(conn,bucketName,objectName);
-		filePath= filepath;
+		this.file= file;
 		httpMethod="PUT";
 		opPath = '/' + bucketName + '/' + objectName;
 	}
@@ -56,7 +57,7 @@ public class PutObjectOp extends ObjectOp{
 		String signature = authentication.getSignature();
 		logger.info("Signature : " + signature);
 		// Creating inputstream of File to be uploaded
-		InputStream object = new FileInputStream(filePath);
+		InputStream object = new FileInputStream(file);
 		//Assigning Headers
 		httpHeaders.put("Authorization", signature);
 		httpHeaders.put("Date", date);
